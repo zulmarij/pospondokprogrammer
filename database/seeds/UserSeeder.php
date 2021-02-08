@@ -26,19 +26,18 @@ class UserSeeder extends Seeder
         ]);
         $pimpinan->assignRole('pimpinan');
 
-        $staff = User::create([
-            'name' => 'staff',
-            'email' => 'staff@gmail.com',
-            'password' => bcrypt('password')
-        ]);
-        
-        $staff->assignRole('staff');
-
         $kasir = User::create([
             'name' => 'kasir',
             'email' => 'kasir@gmail.com',
             'password' => bcrypt('password')
         ]);
         $kasir->assignRole('kasir');
+
+        $staff = User::create([
+            'name' => 'staff',
+            'email' => 'staff@gmail.com',
+            'password' => bcrypt('password')
+        ]);
+        $staff->assignRole('staff');
     }
 }
