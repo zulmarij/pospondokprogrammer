@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
             'email' => 'staff@gmail.com',
             'password' => bcrypt('password')
         ]);
+        
         $staff->assignRole('staff');
 
         $kasir = User::create([
