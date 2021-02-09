@@ -17,7 +17,7 @@ class ProfilController extends BaseController
      */
     public function index()
     {
-        $user = User::where('id', Auth::user()->id);
+        $user = Auth::user();
 
         if (empty($user)) {
             return $this->responseError('LOGIN DULU', 403);
