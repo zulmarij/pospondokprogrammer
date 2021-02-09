@@ -24,7 +24,8 @@ Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->na
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
 
-    Route::resource('profil', 'ProfilController');
+    // Route::resource('profil', 'ProfilController');
+    Route::post('profil', 'ProfilController@update');
 
     Route::resource('kategori', 'KategoriController');
 
