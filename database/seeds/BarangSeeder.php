@@ -19,7 +19,7 @@ class BarangSeeder extends Seeder
             'harga_jual' => 15000,
             'kategori_id' => 1,
             'merk' => 'Curah',
-            'stock' => 25,
+            'stok' => 25,
             'diskon' => 5
         ]);
 
@@ -30,7 +30,7 @@ class BarangSeeder extends Seeder
             'harga_jual' => 24000,
             'kategori_id' => 2,
             'merk' => 'Aqua',
-            'stock' => 30,
+            'stok' => 30,
             'diskon' => 10,
         ]);
 
@@ -41,7 +41,7 @@ class BarangSeeder extends Seeder
             'harga_jual' => 23000,
             'kategori_id' => 3,
             'merk' => 'Roma',
-            'stock' => 30,
+            'stok' => 30,
             'diskon' => 10,
         ]);
 
@@ -52,7 +52,7 @@ class BarangSeeder extends Seeder
             'harga_jual' => 17000,
             'kategori_id' => 4,
             'merk' => 'Juara Snack',
-            'stock' => 25,
+            'stok' => 25,
             'diskon' => 5,
         ]);
 
@@ -63,7 +63,7 @@ class BarangSeeder extends Seeder
             'harga_jual' => 3000,
             'kategori_id' => 5,
             'merk' => 'Lifebuoy',
-            'stock' => 15,
+            'stok' => 15,
             'diskon' => 0,
         ]);
 
@@ -74,18 +74,18 @@ class BarangSeeder extends Seeder
             'harga_jual' => 18000,
             'kategori_id' => 6,
             'merk' => 'Rinso',
-            'stock' => 20,
+            'stok' => 20,
             'diskon' => 5,
         ]);
 
         Barang::create([
-            'nama' => 'Stella Air Freshener Refill Green 225Ml',
+            'nama' => 'Stella Air Freshener Refill Green 225ml',
             'uid' => rand(1,1000000000),
             'harga_beli' => 27000,
             'harga_jual' => 32000,
             'kategori_id' => 7,
             'merk' => 'Stella',
-            'stock' => 30,
+            'stok' => 30,
             'diskon' => 15,
         ]);
 
@@ -96,7 +96,7 @@ class BarangSeeder extends Seeder
             'harga_jual' => 25000,
             'kategori_id' => 8,
             'merk' => 'Sinar Dunia',
-            'stock' => 25,
+            'stok' => 25,
             'diskon' => 10,
         ]);
     }

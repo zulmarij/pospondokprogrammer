@@ -21,11 +21,9 @@ class CreateBarangsTable extends Migration
             $table->bigInteger('harga_jual');
             $table->unsignedBigInteger('kategori_id');
             $table->string('merk');
-            $table->integer('stock');
+            $table->integer('stok');
             $table->integer('diskon');
             $table->timestamps();
-
-            $table->foreign('kategori_id')->references('id')->on('kategoris')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
