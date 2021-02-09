@@ -108,10 +108,9 @@ class ProfilController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        $id = Auth::id();
-        User::find($id)->delete();
-        return $this->responseOk('Akun di Hapus', 200);
+        User::find(Auth::user()->id)->delete();
+        return $this->responseOk('Profil di Hapus', 200);
     }
 }
