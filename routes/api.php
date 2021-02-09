@@ -25,4 +25,18 @@ Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->na
 
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
+
+    Route::resource('kategori', 'KategoriController');
+
+    Route::resource('barang', 'BarangController');
+
+    Route::resource('supplier', 'SupplierController');
+
+    Route::resource('member', 'MemberController');
+
+    Route::resource('pengeluaran', 'PengeluaranController');
+
+    Route::resource('penjualan', 'PenjualanController');
+
+    Route::resource('pembelian', 'PembelianController');
 });
