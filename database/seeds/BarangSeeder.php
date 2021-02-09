@@ -14,7 +14,7 @@ class BarangSeeder extends Seeder
     {
         Barang::create([
             'nama' => 'Beras Curah 1kg',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 11000,
             'harga_jual' => 15000,
             'kategori_id' => 1,
@@ -25,7 +25,7 @@ class BarangSeeder extends Seeder
 
         Barang::create([
             'nama' => 'Aqua Air Mineral 220ml',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 20000,
             'harga_jual' => 24000,
             'kategori_id' => 2,
@@ -36,7 +36,7 @@ class BarangSeeder extends Seeder
 
         Barang::create([
             'nama' => 'Roma Biskuit Kelapa',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 19000,
             'harga_jual' => 23000,
             'kategori_id' => 3,
@@ -47,7 +47,7 @@ class BarangSeeder extends Seeder
 
         Barang::create([
             'nama' => 'Momogi Cokelat Snack 200g',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 14000,
             'harga_jual' => 17000,
             'kategori_id' => 4,
@@ -58,7 +58,7 @@ class BarangSeeder extends Seeder
 
         Barang::create([
             'nama' => 'Lifebuoy Cool Fresh Sabun batang 75Gr',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 1000,
             'harga_jual' => 3000,
             'kategori_id' => 5,
@@ -69,7 +69,7 @@ class BarangSeeder extends Seeder
 
         Barang::create([
             'nama' => 'Rinso Matic Deterjen Bubuk',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 15000,
             'harga_jual' => 18000,
             'kategori_id' => 6,
@@ -80,7 +80,7 @@ class BarangSeeder extends Seeder
 
         Barang::create([
             'nama' => 'Stella Air Freshener Refill Green 225ml',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 27000,
             'harga_jual' => 32000,
             'kategori_id' => 7,
@@ -91,7 +91,7 @@ class BarangSeeder extends Seeder
 
         Barang::create([
             'nama' => 'Buku Tulis Sinar Dunia 38 Lembar',
-            'uid' => rand(1,1000000000),
+            'uid' => rand(0,9999999999),
             'harga_beli' => 21000,
             'harga_jual' => 25000,
             'kategori_id' => 8,

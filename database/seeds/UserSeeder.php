@@ -32,7 +32,9 @@ class UserSeeder extends Seeder
             'nama' => 'kasir',
             'email' => 'kasir@gmail.com',
             'password' => bcrypt('password'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'umur' => 22,
+            'alamat' => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta'
         ]);
         $kasir->assignRole('kasir');
 
@@ -43,5 +45,13 @@ class UserSeeder extends Seeder
             'email_verified_at' => now()
         ]);
         $staff->assignRole('staff');
+
+        $member = User::create([
+            'nama' => 'member',
+            'email' => 'member@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now()
+        ]);
+        $member->assignRole('member');
     }
 }

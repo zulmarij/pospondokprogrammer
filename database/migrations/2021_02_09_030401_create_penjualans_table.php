@@ -21,7 +21,7 @@ class CreatePenjualansTable extends Migration
             $table->bigInteger('dibayar');
             $table->bigInteger('kembalian');
             $table->bigInteger('kode_member');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

@@ -58,7 +58,7 @@ class UserController extends BaseController
         ];
 
         if ($user = User::create($params)) {
-            $user->assignRole('kasir');
+            $user->assignRole('member');
             $token = $user->createToken('pos')->accessToken;
 
             $response = [
