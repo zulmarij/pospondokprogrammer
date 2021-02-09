@@ -24,12 +24,15 @@ Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->na
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
 
-    // Route::resource('profil', 'ProfilController');
+    Route::resource('user', 'UserController');
+
     Route::get('profil', 'ProfilController@index');
     Route::post('profil', 'ProfilController@update');
     Route::delete('profil', 'ProfilController@destroy');
 
-    Route::resource('kategori', 'KategoriController');
+    Route::get('kategori', 'KategoriController@index');
+    Route::post('kategori', 'KategoriController@store');
+    Route::post('kategori/{id}', 'KategoriController@update');
 
     Route::resource('barang', 'BarangController');
 

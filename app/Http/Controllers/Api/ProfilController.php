@@ -79,7 +79,7 @@ class ProfilController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'name'    => 'string',
-            'email'   => 'string|email',
+            'email'   => 'string|email|unique:users',
             'umur'   => 'integer',
             'alamat' => 'string'
 

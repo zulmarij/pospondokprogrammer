@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\BaseController;
+use App\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class KategoriController extends Controller
+class KategoriController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,12 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $kategori = Kategori::get();
+
+        if (empty($kategori)) {
+            return $this->responseError('Kategori Kosong', 403);
+        }
+        return $this->responseOk($kategori, 200, 'Sukses Liat Data Kategori');
     }
 
     /**
@@ -24,7 +31,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +42,21 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->responseError('Gagal Buat Kategori', 422, $validator->errors());
+        }
+
+
+        $params = [
+            'nama' => $request->nama
+        ];
+
+        $kategori = Kategori::create($params);
+        return $this->responseOk($kategori, 200, 'Sukses Buat Kategori');
     }
 
     /**
@@ -69,7 +90,22 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->responseError('Gagal Edit Kategori', 422, $validator->errors());
+        }
+
+        $kategori = Kategori::find($id);
+
+        $params = [
+            'nama' => $request->nama
+        ];
+
+        $kategori->update($params);
+        return $this->responseOk($kategori, 200, 'Sukses Edit Kategori');
     }
 
     /**
@@ -80,6 +116,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kategori = Kategori::find($id);
+        $kategori->delete();
     }
 }
