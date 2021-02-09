@@ -25,7 +25,9 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
 
     // Route::resource('profil', 'ProfilController');
+    Route::get('profil', 'ProfilController@index');
     Route::post('profil', 'ProfilController@update');
+    Route::delete('profil', 'ProfilController@destroy');
 
     Route::resource('kategori', 'KategoriController');
 
