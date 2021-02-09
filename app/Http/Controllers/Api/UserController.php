@@ -42,7 +42,7 @@ class UserController extends BaseController
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'nama' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
         ]);
@@ -52,7 +52,7 @@ class UserController extends BaseController
         }
 
         $params = [
-            'name' => $request->name,
+            'nama' => $request->nama,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ];
