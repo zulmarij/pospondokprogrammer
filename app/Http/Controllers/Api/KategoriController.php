@@ -50,7 +50,6 @@ class KategoriController extends BaseController
             return $this->responseError('Gagal Buat Kategori', 422, $validator->errors());
         }
 
-
         $params = [
             'nama' => $request->nama
         ];
@@ -118,5 +117,7 @@ class KategoriController extends BaseController
     {
         $kategori = Kategori::find($id);
         $kategori->delete();
+
+        return $this->responseOk(null, 200, 'Sukses Hapus Kategori');
     }
 }

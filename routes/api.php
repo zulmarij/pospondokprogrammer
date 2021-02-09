@@ -33,12 +33,22 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::get('kategori', 'KategoriController@index');
     Route::post('kategori', 'KategoriController@store');
     Route::post('kategori/{id}', 'KategoriController@update');
+    Route::delete('kategori/{id}', 'KategoriController@destroy');
 
-    Route::resource('barang', 'BarangController');
+    Route::get('barang', 'BarangController@index');
+    Route::post('barang', 'BarangController@store');
+    Route::post('barang/{id}', 'BarangController@update');
+    Route::delete('barang/{id}', 'BarangController@destroy');
 
-    Route::resource('supplier', 'SupplierController');
+    Route::get('supplier', 'SupplierController@index');
+    Route::post('supplier', 'SupplierController@store');
+    Route::post('supplier/{id}', 'SupplierController@update');
+    Route::delete('supplier/{id}', 'SupplierController@delete');
 
-    Route::resource('member', 'MemberController');
+    Route::get('member', 'MemberController@index');
+    Route::post('member', 'MemberController@store');
+    Route::post('member', 'MemberController@update');
+    Route::delete('member', 'MemberController@destroy');
 
     Route::resource('pengeluaran', 'PengeluaranController');
 
