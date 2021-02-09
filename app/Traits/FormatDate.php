@@ -19,4 +19,9 @@ trait FormatDate
     {
         return Carbon::parse($this->attributes['updated_at'])->diffForHumans();
     }
+
+    public function getEmailVerifiedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['email_verified_at'])->translatedFormat($this->newDateFormat);
+    }
 }
