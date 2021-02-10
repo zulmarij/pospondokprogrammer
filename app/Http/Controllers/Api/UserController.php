@@ -16,17 +16,17 @@ class UserController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Masuk', 422, $validator->errors());
+            return $this->responseError(422, $validator->errors());
         }
 
         if (Auth::attempt([
             'email' => request('email'),
-            'password' => request('password')
-        ])) {
+            'password' => request('password'),
+        ], $request->has('remember_me') ? true : false)) {
             $user = Auth::user();
             $user->getRoleNames();
             $response = [
@@ -34,9 +34,9 @@ class UserController extends BaseController
                 'user' => $user,
             ];
 
-            return $this->responseOk($response, 200, 'Berhasil Login');
-        }else {
-            return $this->responseError('Password atau Email Salah', 401);
+            return $this->responseOk(200, $response);
+        } else {
+            return $this->responseError(401, 'Email atau Password Salah');
         }
     }
 
@@ -45,7 +45,9 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'kode_member' => 'integer',
+            'no_hp' => 'required|string',
+            'password' => 'required|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -55,6 +57,8 @@ class UserController extends BaseController
         $params = [
             'nama' => $request->nama,
             'email' => $request->email,
+            'kode_member' => $request->kode_member ?? rand(999999999,999999999999),
+            'no_hp' => $request->no_hp,
             'password' => bcrypt($request->password),
         ];
 
@@ -82,7 +86,7 @@ class UserController extends BaseController
     public function index()
     {
         $user = User::get();
-        
+
         if (empty($user)) {
             return $this->responseError('User Kosong', 403);
         }
@@ -178,7 +182,7 @@ class UserController extends BaseController
         }
 
         $user = User::find($id);
-        $role = Role::pluck('name','name')->all();
+        $role = Role::pluck('name', 'name')->all();
 
         $params = [
             'nama' => $request->nama ?? $user->nama,
