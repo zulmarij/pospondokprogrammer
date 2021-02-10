@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('foto')->nullable()->default('https://i.ibb.co/cFZfrYC/administrator.png');
+            $table->bigInteger('kode_member')->nullable();
+            $table->string('no_hp')->nullable();
             $table->integer('umur')->nullable();
             $table->string('alamat')->nullable();
             $table->rememberToken();

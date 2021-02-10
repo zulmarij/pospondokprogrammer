@@ -3,25 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Pembelian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
-class PembelianController extends Controller
+class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $pembelian = Pembelian::get();
+        $role = Role::get();
 
-        if (empty($pembelian)) {
-            return $this->responseError('Pembelian Kosong', 403);
+        if (empty($role)) {
+            return $this->responseError('Role Kosong', 403);
         }
-        return $this->responseOk($pembelian, 200, 'Sukses Liat Data Pembelian');
+        return $this->responseOk($role, 200, 'Sukses Liat Data Role');
     }
 
     /**
@@ -43,21 +38,20 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'supplier_id' => 'required|integer',
-            'barang' => 'required|string',
+            'name' => 'required|string',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Pembelian', 422, $validator->errors());
+            return $this->responseError('Gagal Buat Role', 422, $validator->errors());
         }
 
         $params = [
-            'supplier_id' => $request->supplier_id,
-            'barang' => $request->barang,
+            'name' => $request->name,
         ];
 
-        $pembelian = Pembelian::create($params);
-        return $this->responseOk($pembelian, 200, 'Sukses Buat Pembelian');
+        $role = Role::create($params);
+
+        return $this->responseOk($role, 200, 'Sukses Buat Role');
     }
 
     /**
@@ -92,23 +86,22 @@ class PembelianController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'supplier_id' => 'string',
-            'barang' => 'string',
+            'name' => 'string',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Ubah Pembelian', 422, $validator->errors());
+            return $this->responseError('Gagal Ubah Role', 422, $validator->errors());
         }
 
-        $pembelian = Pembelian::find($id);
+        $role = Role::find($id);
 
         $params = [
-            'supplier_id' => $request->supplier_id ?? $pembelian->supplier_id,
-            'barang' => $request->barang ?? $pembelian->barang,
+            'name' => $request->name ?? $role->name,
         ];
 
-        $pembelian->update($params);
-        return $this->responseOk($pembelian, 200, 'Sukses Ubah Pembelian');
+        $role->update($params);
+
+        return $this->responseOk($role, 200, 'Sukses Ubah Role');
     }
 
     /**
@@ -119,9 +112,9 @@ class PembelianController extends Controller
      */
     public function destroy($id)
     {
-        $pembelian = Pembelian::find($id);
-        $pembelian->delete();
+        $role = Role::find($id);
+        $role->delete();
 
-        return $this->responseOk(null, 200, 'Sukses Hapus Pembelian');
+        return $this->responseOk(null, 200, 'Sukses Hapus Role');
     }
 }

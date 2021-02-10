@@ -99,7 +99,7 @@ class SupplierController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Supplier', 422, $validator->errors());
+            return $this->responseError('Gagal Ubah Supplier', 422, $validator->errors());
         }
 
         $supplier = Supplier::find($id);
@@ -111,7 +111,7 @@ class SupplierController extends BaseController
         ];
 
         $supplier->update($params);
-        return $this->responseOk($supplier, 200, 'Sukses Buat Supplier');
+        return $this->responseOk($supplier, 200, 'Sukses Ubah Supplier');
     }
 
     /**

@@ -105,7 +105,7 @@ class MemberController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Member', 422, $validator->errors());
+            return $this->responseError('Gagal Ubah Member', 422, $validator->errors());
         }
 
         $member = Member::find($id);
@@ -118,7 +118,7 @@ class MemberController extends BaseController
         ];
 
         $member->update($params);
-        return $this->responseOk($member, 200, 'Sukses Buat Member');
+        return $this->responseOk($member, 200, 'Sukses Ubah Member');
     }
 
     /**

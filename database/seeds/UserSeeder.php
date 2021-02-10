@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -16,7 +17,12 @@ class UserSeeder extends Seeder
             'nama' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+            'foto' => 'https://i.ibb.co/cFZfrYC/administrator.png',
+            'no_hp' => '081350887602',
+            'umur' => 25,
+            'alamat' => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta'
         ]);
         $admin->assignRole('admin');
 
@@ -24,7 +30,12 @@ class UserSeeder extends Seeder
             'nama' => 'pimpinan',
             'email' => 'pimpinan@gmail.com',
             'password' => bcrypt('password'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+            'foto' => 'https://i.ibb.co/cFZfrYC/administrator.png',
+            'no_hp' => '081350887602',
+            'umur' => 25,
+            'alamat' => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta'
         ]);
         $pimpinan->assignRole('pimpinan');
 
@@ -33,8 +44,11 @@ class UserSeeder extends Seeder
             'email' => 'kasir@gmail.com',
             'password' => bcrypt('password'),
             'email_verified_at' => now(),
-            'umur' => 22,
-            'alamat' => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta'
+            'remember_token' => Str::random(10),
+            'foto' => 'https://i.ibb.co/cFZfrYC/administrator.png',
+            'no_hp' => '081350887602',
+            'umur' => 25,
+            'alamat' => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta',
         ]);
         $kasir->assignRole('kasir');
 
@@ -42,7 +56,12 @@ class UserSeeder extends Seeder
             'nama' => 'staff',
             'email' => 'staff@gmail.com',
             'password' => bcrypt('password'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+            'foto' => 'https://i.ibb.co/cFZfrYC/administrator.png',
+            'no_hp' => '081350887602',
+            'umur' => 25,
+            'alamat' => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta'
         ]);
         $staff->assignRole('staff');
 
@@ -50,7 +69,13 @@ class UserSeeder extends Seeder
             'nama' => 'member',
             'email' => 'member@gmail.com',
             'password' => bcrypt('password'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+            'foto' => 'https://i.ibb.co/cFZfrYC/administrator.png',
+            'kode_member' => rand(999999999,999999999999),
+            'no_hp' => '081350887602',
+            'umur' => 25,
+            'alamat' => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta'
         ]);
         $member->assignRole('member');
     }

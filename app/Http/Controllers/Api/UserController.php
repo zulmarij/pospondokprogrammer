@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\BaseController;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class UserController extends BaseController
 {
@@ -80,7 +81,12 @@ class UserController extends BaseController
 
     public function index()
     {
-        //
+        $user = User::get();
+        
+        if (empty($user)) {
+            return $this->responseError('User Kosong', 403);
+        }
+        return $this->responseOk($user, 200, 'Sukses Liat Data User');
     }
 
     /**
@@ -101,7 +107,31 @@ class UserController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string',
+            'umur' => 'integer',
+            'alamat' => 'string',
+            'role' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->responseError('Gagal Buat User', 422, $validator->errors());
+        }
+
+        $params = [
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'umur' => $request->umur,
+            'alamat' => $request->alamat,
+        ];
+
+        $user = User::create($params);
+        $user->assignRole(request('role'));
+
+        return $this->responseOk($user, 200, 'Sukses Buat User');
     }
 
     /**
@@ -135,7 +165,33 @@ class UserController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama' => 'string',
+            'email' => 'email|unique:users',
+            'password' => 'string',
+            'umur' => 'integer',
+            'alamat' => 'string',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->responseError('Gagal Ubah User', 422, $validator->errors());
+        }
+
+        $user = User::find($id);
+        $role = Role::pluck('name','name')->all();
+
+        $params = [
+            'nama' => $request->nama ?? $user->nama,
+            'email' => $request->email ?? $user->email,
+            'password' => bcrypt($request->password) ?? $user->password,
+            'umur' => $request->umur ?? $user->umur,
+            'alamat' => $request->alamat ?? $user->alamat,
+        ];
+
+        $user->update($params);
+        $user->assignRole(request('role') ?? $user->role);
+
+        return $this->responseOk($user, 200, 'Sukses Ubah User');
     }
 
     /**
@@ -146,6 +202,9 @@ class UserController extends BaseController
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return $this->responseOk(null, 200, 'Sukses Hapus User');
     }
 }

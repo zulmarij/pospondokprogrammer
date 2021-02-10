@@ -24,7 +24,15 @@ Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->na
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
 
-    Route::resource('user', 'UserController');
+    Route::get('user', 'UserController@index');
+    Route::post('user', 'UserController@store');
+    Route::post('user/{id}', 'UserController@update');
+    Route::delete('user/{id}', 'UserController@destroy');
+
+    Route::get('role', 'RoleController@index');
+    Route::post('role', 'RoleController@store');
+    Route::post('role/{id}', 'RoleController@update');
+    Route::delete('role/{id}', 'RoleController@destroy');
 
     Route::get('profil', 'ProfilController@index');
     Route::post('profil', 'ProfilController@update');
@@ -43,16 +51,25 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::get('supplier', 'SupplierController@index');
     Route::post('supplier', 'SupplierController@store');
     Route::post('supplier/{id}', 'SupplierController@update');
-    Route::delete('supplier/{id}', 'SupplierController@delete');
+    Route::delete('supplier/{id}', 'SupplierController@destroy');
 
     Route::get('member', 'MemberController@index');
     Route::post('member', 'MemberController@store');
-    Route::post('member', 'MemberController@update');
-    Route::delete('member', 'MemberController@destroy');
+    Route::post('member/{id}', 'MemberController@update');
+    Route::delete('member{id}', 'MemberController@destroy');
 
-    Route::resource('pengeluaran', 'PengeluaranController');
+    Route::get('pengeluaran', 'PengeluaranController@index');
+    Route::post('pengeluaran', 'PengeluaranController@store');
+    Route::post('pengeluaran/{id}', 'PengeluaranController@update');
+    Route::delete('pengeluaran{id}', 'PengeluaranController@destroy');
 
-    Route::resource('penjualan', 'PenjualanController');
+    Route::get('penjualan', 'PenjualanController@index');
+    Route::post('penjualan', 'PenjualanController@store');
+    Route::post('penjualan/{id}', 'PenjualanController@update');
+    Route::delete('penjualan{id}', 'PenjualanController@destroy');
 
-    Route::resource('pembelian', 'PembelianController');
+    Route::get('pembelian', 'PembelianController@index');
+    Route::post('pembelian', 'PembelianController@store');
+    Route::post('pembelian/{id}', 'PembelianController@update');
+    Route::delete('pembelian{id}', 'PembelianController@destroy');
 });
