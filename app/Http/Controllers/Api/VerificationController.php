@@ -50,7 +50,7 @@ class VerificationController extends BaseController
     public function resend(Request $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return $this->responseOk($request, 200, 'Sudah Verifikasi');
+            return $this->responseOk('Sudah Verifikasi');
 
             // return response(['message'=>'Already verified']);
         }
@@ -58,7 +58,7 @@ class VerificationController extends BaseController
         $request->user()->sendEmailVerificationNotification();
 
         if ($request->wantsJson()) {
-            return $this->responseOk($request, 200, 'Liat di Email');
+            return $this->responseOk('Liat di Email');
         }
 
         return back()->with('resent', true);
@@ -81,7 +81,7 @@ class VerificationController extends BaseController
         }
 
         if ($request->user()->hasVerifiedEmail()) {
-            return $this->responseOk($request, 200, 'Sudah Verifikasi');
+            return $this->responseOk('Sudah Verifikasi');
             // return response(['message'=>'Already verified']);
 
             // return redirect($this->redirectPath());
@@ -90,7 +90,7 @@ class VerificationController extends BaseController
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
-        return $this->responseOk($request, 200, 'Berhasil Verifikasi');
+        return $this->responseOk('Berhasil Verifikasi');
         // return response(['message'=>'Successfully verified']);
 
     }
