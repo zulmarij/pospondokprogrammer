@@ -21,7 +21,7 @@ class KategoriController extends BaseController
         if (empty($kategori)) {
             return $this->responseError('Kategori Kosong', 403);
         }
-        return $this->responseOk($kategori, 200, 'Sukses Liat Data Kategori');
+        return $this->responseOk($kategori);
     }
 
     /**
@@ -47,7 +47,7 @@ class KategoriController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Kategori', 422, $validator->errors());
+            return $this->responseError('Kategori gagal ditambahkan', 422, $validator->errors());
         }
 
         $params = [
@@ -55,7 +55,7 @@ class KategoriController extends BaseController
         ];
 
         $kategori = Kategori::create($params);
-        return $this->responseOk($kategori, 200, 'Sukses Buat Kategori');
+        return $this->responseOk($kategori, 201, 'Kategori berhasil ditambahkan');
     }
 
     /**
@@ -89,14 +89,6 @@ class KategoriController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return $this->responseError('Gagal Edit Kategori', 422, $validator->errors());
-        }
-
         $kategori = Kategori::find($id);
 
         $params = [
@@ -104,7 +96,7 @@ class KategoriController extends BaseController
         ];
 
         $kategori->update($params);
-        return $this->responseOk($kategori, 200, 'Sukses Edit Kategori');
+        return $this->responseOk($kategori, 200, 'Kategori berhasil diupdate');
     }
 
     /**
@@ -118,6 +110,6 @@ class KategoriController extends BaseController
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return $this->responseOk(null, 200, 'Sukses Hapus Kategori');
+        return $this->responseOk(null, 200, 'Kategori berhasil dihapus');
     }
 }
