@@ -31,7 +31,7 @@ class BarangSeeder extends Seeder
             'kategori_id' => 2,
             'merk' => 'Aqua',
             'stok' => 30,
-            'diskon' => 1000,
+            'diskon' => 100,
         ]);
 
         Barang::create([
@@ -42,7 +42,7 @@ class BarangSeeder extends Seeder
             'kategori_id' => 3,
             'merk' => 'Roma',
             'stok' => 30,
-            'diskon' => 1000,
+            'diskon' => 100,
         ]);
 
         Barang::create([
@@ -64,7 +64,7 @@ class BarangSeeder extends Seeder
             'kategori_id' => 5,
             'merk' => 'Lifebuoy',
             'stok' => 15,
-            'diskon' => 000,
+            'diskon' => 0,
         ]);
 
         Barang::create([
@@ -86,7 +86,7 @@ class BarangSeeder extends Seeder
             'kategori_id' => 7,
             'merk' => 'Stella',
             'stok' => 30,
-            'diskon' => 1005,
+            'diskon' => 15,
         ]);
 
         Barang::create([
@@ -97,7 +97,7 @@ class BarangSeeder extends Seeder
             'kategori_id' => 8,
             'merk' => 'Sinar Dunia',
             'stok' => 25,
-            'diskon' => 1000,
+            'diskon' => 10,
         ]);
     }
 }
