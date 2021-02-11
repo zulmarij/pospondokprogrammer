@@ -43,7 +43,10 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('kategori/{id}', 'KategoriController@update');
     Route::delete('kategori/{id}', 'KategoriController@destroy');
 
+    Route::get('barang/search/{data}', 'BarangController@search');
+    Route::get('barang/uid/{uid}', 'BarangController@uid');
     Route::get('barang', 'BarangController@index');
+    Route::get('barang/{id}', 'BarangController@show');
     Route::post('barang', 'BarangController@store');
     Route::post('barang/{id}', 'BarangController@update');
     Route::delete('barang/{id}', 'BarangController@destroy');

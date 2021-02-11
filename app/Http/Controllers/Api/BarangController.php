@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Validator;
 
 class BarangController extends BaseController
 {
+    public function search($data)
+    {
+        $barang = Barang::where('nama', 'like', "%{$data}%")
+            ->orWhere('uid', 'like', "%{$data}%")
+            ->orWhere('harga_beli', 'like', "%{$data}%")
+            ->orWhere('harga_jual', 'like', "%{$data}%")
+            ->orWhere('kategori_id', 'like', "%{$data}%")
+            ->orWhere('merk', 'like', "%{$data}%")
+            ->orWhere('stok', 'like', "%{$data}%")
+            ->orWhere('diskon', 'like', "%{$data}%")
+            ->get();
+
+        return $this->responseOk($barang);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -55,12 +69,12 @@ class BarangController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Barang', 422, $validator->errors());
+            return $this->responseError('Barang gagal ditambahkan', 422, $validator->errors());
         }
 
         $params = [
             'nama' => $request->nama,
-            'uid' => $request->uid ?? rand(0,9999999999),
+            'uid' => $request->uid ?? rand(0, 9999999999),
             'harga_beli' => $request->harga_beli,
             'harga_jual' => $request->harga_jual,
             'kategori_id' => $request->kategori_id,
@@ -70,7 +84,7 @@ class BarangController extends BaseController
         ];
 
         $barang = Barang::create($params);
-        return $this->responseOk($barang, 200, 'Sukses Buat Barang');
+        return $this->responseOk($barang, 201, 'Barang berhasil ditambahkan');
     }
 
     /**
@@ -81,7 +95,16 @@ class BarangController extends BaseController
      */
     public function show($id)
     {
-        //
+        $barang = Barang::find($id);
+
+        return $this->responseOk($barang);
+    }
+
+    public function uid($uid)
+    {
+        $barang = Barang::where('uid', $uid)->get();
+
+        return $this->responseOk($barang);
     }
 
     /**
@@ -116,7 +139,7 @@ class BarangController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Barang', 422, $validator->errors());
+            return $this->responseError('Barang gagal diupdate', 422, $validator->errors());
         }
 
         $barang = Barang::find($id);
@@ -133,7 +156,7 @@ class BarangController extends BaseController
         ];
 
         $barang->update($params);
-        return $this->responseOk($barang, 200, 'Sukses Buat Barang');
+        return $this->responseOk($barang, 200, 'Barang berhasil diupdate');
     }
 
     /**
@@ -147,6 +170,6 @@ class BarangController extends BaseController
         $barang = Barang::find($id);
         $barang->delete();
 
-        return $this->responseOk(null, 200, 'Sukses Hapus Barang');
+        return $this->responseOk(null, 200, 'Barang berhasil dihapus');
     }
 }
