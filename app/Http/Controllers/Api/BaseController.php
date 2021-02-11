@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class BaseController extends Controller
 {
-    public function responseOk($code = 200, $result, $message = 'Sukses')
+    public function responseOk($result, $code = 200, $message = 'Sukses')
     {
         $response = [
             'code' => $code,
@@ -18,7 +18,7 @@ class BaseController extends Controller
         return response()->json($response, $code);
     }
 
-    public function responseError($code = 422, $errorDetails = [], $error = 'Gagal' )
+    public function responseError($errorDetails = [], $code = 422, $error = 'Gagal' )
     {
         $response = [
             'code' => $code,

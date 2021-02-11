@@ -20,7 +20,7 @@ class UserController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError(422, $validator->errors());
+            return $this->responseError($validator->errors());
         }
 
         if (Auth::attempt([
@@ -34,9 +34,9 @@ class UserController extends BaseController
                 'user' => $user,
             ];
 
-            return $this->responseOk(200, $response);
+            return $this->responseOk($response);
         } else {
-            return $this->responseError(401, 'Email atau Password Salah');
+            return $this->responseError('Email atau Password Salah');
         }
     }
 
@@ -51,7 +51,7 @@ class UserController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Daftar', 422, $validator->errors());
+            return $this->responseError($validator->errors());
         }
 
         $params = [
@@ -70,9 +70,9 @@ class UserController extends BaseController
                 'token' => $token,
                 'user' => $user,
             ];
-            return $this->responseOk($response);
+            return $this->responseOk($response, 201, 'Berhasil mendaftar');
         } else {
-            return $this->responseError('Gagal Daftar', 400);
+            return $this->responseError('Gagal Daftar');
         }
     }
 
@@ -80,7 +80,7 @@ class UserController extends BaseController
     {
         $request->user()->token()->revoke();
 
-        return $this->responseOk(null, 200, 'Berhasil Keluar');
+        return $this->responseOk('Berhasil Keluar');
     }
 
     public function index()

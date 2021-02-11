@@ -31,6 +31,6 @@ class ResetPasswordController extends BaseController
 
     protected function sendResetFailedResponse(Request $request, $response)
     {
-        return $this->responseError(trans($response), 422);
+        return $this->responseError(trans($response));
     }
 }

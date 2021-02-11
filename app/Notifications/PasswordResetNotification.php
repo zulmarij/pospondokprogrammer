@@ -45,7 +45,7 @@ class PasswordResetNotification extends Notification
     {
         $urlToResetForm = "http://localhost:8000/reset-password-form/?token=". $this->token;
         return (new MailMessage)
-            ->subject(Lang::get('Bank Sampah - Token atur ulang kata sandi'))
+            ->subject(Lang::get('Pospro Mart - Token atur ulang kata sandi'))
             // ->greeting(lang::get('Assalamualaikum'))
             ->line(Lang::get('Jangan pernah memberikan token ini ke siapapun!'))
             ->action(Lang::get($this->token), $this->token)
