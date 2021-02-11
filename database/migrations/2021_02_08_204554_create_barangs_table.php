@@ -22,7 +22,7 @@ class CreateBarangsTable extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->string('merk');
             $table->integer('stok');
-            $table->integer('diskon');
+            $table->bigInteger('diskon');
             $table->timestamps();
         });
     }
