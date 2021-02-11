@@ -21,7 +21,7 @@ class SupplierController extends BaseController
         if (empty($supplier)) {
             return $this->responseError('Supplier Kosong', 403);
         }
-        return $this->responseOk($supplier, 200, 'Sukses Liat Data Supplier');
+        return $this->responseOk($supplier);
     }
 
     /**
@@ -49,7 +49,7 @@ class SupplierController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Supplier', 422, $validator->errors());
+            return $this->responseError('Supplier gagal ditambahkan', 422, $validator->errors());
         }
 
         $params = [
@@ -59,7 +59,7 @@ class SupplierController extends BaseController
         ];
 
         $supplier = Supplier::create($params);
-        return $this->responseOk($supplier, 200, 'Sukses Buat Supplier');
+        return $this->responseOk($supplier, 201, 'Supplier berhasil ditambahkan');
     }
 
     /**
@@ -70,7 +70,9 @@ class SupplierController extends BaseController
      */
     public function show($id)
     {
-        //
+        $supplier = Supplier::find($id);
+
+        return $this->responseOk($supplier);
     }
 
     /**
@@ -99,7 +101,7 @@ class SupplierController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Ubah Supplier', 422, $validator->errors());
+            return $this->responseError('Supplier gagal diupdate', 422, $validator->errors());
         }
 
         $supplier = Supplier::find($id);
@@ -111,7 +113,7 @@ class SupplierController extends BaseController
         ];
 
         $supplier->update($params);
-        return $this->responseOk($supplier, 200, 'Sukses Ubah Supplier');
+        return $this->responseOk($supplier, 200, 'Supplier berhasil diupdate');
     }
 
     /**
@@ -125,6 +127,6 @@ class SupplierController extends BaseController
         $supplier = Supplier::find($id);
         $supplier->delete();
 
-        return $this->responseOk(null, 200, 'Sukses Hapus Supplier');
+        return $this->responseOk(null, 200, 'Supplier berhasil dihapus');
     }
 }
