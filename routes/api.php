@@ -24,19 +24,11 @@ Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->na
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
 
-    Route::get('user', 'UserController@index');
-    Route::post('user', 'UserController@store');
-    Route::post('user/{id}', 'UserController@update');
-    Route::delete('user/{id}', 'UserController@destroy');
-
-    Route::get('role', 'RoleController@index');
-    Route::post('role', 'RoleController@store');
-    Route::post('role/{id}', 'RoleController@update');
-    Route::delete('role/{id}', 'RoleController@destroy');
-
-    Route::get('profil', 'ProfilController@index');
-    Route::post('profil', 'ProfilController@update');
-    Route::delete('profil', 'ProfilController@destroy');
+    Route::get('supplier', 'SupplierController@index');
+    Route::get('supplier/{id}', 'SupplierController@show');
+    Route::post('supplier', 'SupplierController@store');
+    Route::post('supplier/{id}', 'SupplierController@update');
+    Route::delete('supplier/{id}', 'SupplierController@destroy');
 
     Route::get('kategori', 'KategoriController@index');
     Route::post('kategori', 'KategoriController@store');
@@ -51,11 +43,25 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('barang/{id}', 'BarangController@update');
     Route::delete('barang/{id}', 'BarangController@destroy');
 
-    Route::get('supplier', 'SupplierController@index');
-    Route::get('supplier/{id}', 'SupplierController@show');
-    Route::post('supplier', 'SupplierController@store');
-    Route::post('supplier/{id}', 'SupplierController@update');
-    Route::delete('supplier/{id}', 'SupplierController@destroy');
+    Route::get('kasir', 'KasirController@index');
+    Route::get('kasir/{id}', 'KasirController@show');
+    Route::post('kasir', 'KasirController@store');
+    Route::post('kasir/{id}', 'KasirController@update');
+    Route::delete('kasir/{id}', 'KasirController@destroy');
+
+    Route::get('user', 'UserController@index');
+    Route::post('user', 'UserController@store');
+    Route::post('user/{id}', 'UserController@update');
+    Route::delete('user/{id}', 'UserController@destroy');
+
+    Route::get('role', 'RoleController@index');
+    Route::post('role', 'RoleController@store');
+    Route::post('role/{id}', 'RoleController@update');
+    Route::delete('role/{id}', 'RoleController@destroy');
+
+    Route::get('profil', 'ProfilController@index');
+    Route::post('profil', 'ProfilController@update');
+    Route::delete('profil', 'ProfilController@destroy');
 
     Route::get('member', 'MemberController@index');
     Route::post('member', 'MemberController@store');

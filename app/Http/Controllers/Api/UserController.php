@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\User;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
@@ -28,7 +29,7 @@ class UserController extends BaseController
             'password' => request('password'),
         ], $request->has('remember_me') ? true : false)) {
             $user = Auth::user();
-            $user->getRoleNames();
+            $user->load('roles');
             $response = [
                 'token' => $user->createToken('pos')->accessToken,
                 'user' => $user,
@@ -57,7 +58,7 @@ class UserController extends BaseController
         $params = [
             'nama' => $request->nama,
             'email' => $request->email,
-            'kode_member' => $request->kode_member ?? rand(999999999,999999999999),
+            'kode_member' => $request->kode_member ?? rand(999999999, 999999999999),
             'no_hp' => $request->no_hp,
             'password' => bcrypt($request->password),
         ];
@@ -115,19 +116,40 @@ class UserController extends BaseController
             'nama' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string',
+            'foto' => 'file|image',
+            'kode_member' => 'integer',
+            'no_hp' => 'string',
             'umur' => 'integer',
             'alamat' => 'string',
             'role' => 'required'
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat User', 422, $validator->errors());
+            return $this->responseError('User gagal ditambahkan', 422, $validator->errors());
         }
+
+        $image = base64_encode(file_get_contents(request('foto')));
+        $client = new Client();
+        $res = $client->request('POST', 'https://api.imgbb.com/1/upload', [
+            'form_params' => [
+                'key' => 'b07a227db8a98165791eda2376549b1c',
+                'action' => 'upload',
+                'source' => $image,
+                'format' => 'json'
+            ]
+        ]);
+
+        $get = $res->getBody()->getContents();
+        $data  = json_decode($get);
+        $foto = $data->image->display_url ?? null;
 
         $params = [
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'foto' => $foto,
+            'kode_member' => $request->kode_member ?? rand(999999999, 999999999999),
+            'no_hp' => $request->no_hp,
             'umur' => $request->umur,
             'alamat' => $request->alamat,
         ];
@@ -135,7 +157,7 @@ class UserController extends BaseController
         $user = User::create($params);
         $user->assignRole(request('role'));
 
-        return $this->responseOk($user, 200, 'Sukses Buat User');
+        return $this->responseOk($user, 201, 'User berhasil ditambahkan');
     }
 
     /**
@@ -146,7 +168,9 @@ class UserController extends BaseController
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        return $this->responseOk($user);
     }
 
     /**
@@ -173,21 +197,44 @@ class UserController extends BaseController
             'nama' => 'string',
             'email' => 'email|unique:users',
             'password' => 'string',
+            'foto' => 'file|image',
+            'kode_member' => 'integer',
+            'no_hp' => 'string',
             'umur' => 'integer',
             'alamat' => 'string',
+            'role' => 'string'
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Ubah User', 422, $validator->errors());
+            return $this->responseError('User gagal diupdate', 422, $validator->errors());
         }
+
+        $image = base64_encode(file_get_contents(request('foto')));
+        $client = new Client();
+        $res = $client->request('POST', 'https://api.imgbb.com/1/upload', [
+            'form_params' => [
+                'key' => 'b07a227db8a98165791eda2376549b1c',
+                'action' => 'upload',
+                'source' => $image,
+                'format' => 'json'
+            ]
+        ]);
+
+        $get = $res->getBody()->getContents();
+        $data  = json_decode($get);
 
         $user = User::find($id);
         $role = Role::pluck('name', 'name')->all();
+
+        $foto = $data->image->display_url ?? $user->foto;
 
         $params = [
             'nama' => $request->nama ?? $user->nama,
             'email' => $request->email ?? $user->email,
             'password' => bcrypt($request->password) ?? $user->password,
+            'foto' => $foto ?? $user->foto,
+            'kode_member' => $request->kode_member ?? $user->kode_member,
+            'no_hp' => $request->no_hp ?? $user->no_hp,
             'umur' => $request->umur ?? $user->umur,
             'alamat' => $request->alamat ?? $user->alamat,
         ];
@@ -195,7 +242,7 @@ class UserController extends BaseController
         $user->update($params);
         $user->assignRole(request('role') ?? $user->role);
 
-        return $this->responseOk($user, 200, 'Sukses Ubah User');
+        return $this->responseOk($user, 200, 'User berhasil diupdate');
     }
 
     /**
@@ -209,6 +256,6 @@ class UserController extends BaseController
         $user = User::find($id);
         $user->delete();
 
-        return $this->responseOk(null, 200, 'Sukses Hapus User');
+        return $this->responseOk(null, 200, 'User gagal dihapus');
     }
 }
