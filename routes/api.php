@@ -36,8 +36,8 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::delete('kategori/{id}', 'KategoriController@destroy');
 
     Route::get('barang/search/{data}', 'BarangController@search');
-    Route::get('barang/uid/{uid}', 'BarangController@uid');
     Route::get('barang', 'BarangController@index');
+    Route::get('barang/uid/{uid}', 'BarangController@uid');
     Route::get('barang/{id}', 'BarangController@show');
     Route::post('barang', 'BarangController@store');
     Route::post('barang/{id}', 'BarangController@update');
@@ -59,15 +59,20 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('user/{id}', 'UserController@update');
     Route::delete('user/{id}', 'UserController@destroy');
 
+
+    Route::get('member', 'MemberController@index');
+    Route::get('member/kode_member/{kode_member}', 'MemberController@kodeMember');
+    Route::get('member/saldo', 'MemberController@saldo');
+    Route::get('member/{id}', 'MemberController@show');
+    Route::post('member/topup', 'MemberController@topup');
+    Route::post('member', 'MemberController@store');
+    Route::post('member/{id}', 'MemberController@update');
+    Route::delete('member/{id}', 'MemberController@destroy');
+
     Route::get('role', 'RoleController@index');
     Route::post('role', 'RoleController@store');
     Route::post('role/{id}', 'RoleController@update');
     Route::delete('role/{id}', 'RoleController@destroy');
-
-    Route::get('member', 'MemberController@index');
-    Route::post('member', 'MemberController@store');
-    Route::post('member/{id}', 'MemberController@update');
-    Route::delete('member{id}', 'MemberController@destroy');
 
     Route::get('pengeluaran', 'PengeluaranController@index');
     Route::post('pengeluaran', 'PengeluaranController@store');

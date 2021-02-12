@@ -15,8 +15,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
-            $table->bigInteger('kode_member');
+            $table->unsignedBigInteger('user_id');
             $table->bigInteger('saldo');
             $table->timestamps();
         });

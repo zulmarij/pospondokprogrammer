@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\BaseController;
 use App\Member;
+use App\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class MemberController extends BaseController
@@ -16,13 +19,12 @@ class MemberController extends BaseController
      */
     public function index()
     {
-        $member = Member::get();
-        $member->load('users');
-
-        if (empty($member)) {
+        $user = User::role('member')->get();
+        $user->load( 'member','roles');
+        if (empty($user)) {
             return $this->responseError('Member Kosong', 403);
         }
-        return $this->responseOk($member, 200, 'Sukses Liat Data Member');
+        return $this->responseOk($user);
     }
 
     /**
@@ -44,26 +46,48 @@ class MemberController extends BaseController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|integer',
+            'nama' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'foto' => 'file|image',
+            'kode_member' => 'integer|unique:users',
             'no_hp' => 'required|string',
-            'kode_member' => 'integer',
-            'saldo' => 'required|integer'
-
+            'password' => 'required|confirmed',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Member', 422, $validator->errors());
+            return $this->responseError('Member gagal ditambahkan', 422, $validator->errors());
+        }
+
+        if ($request->foto) {
+            $image = base64_encode(file_get_contents(request('foto')));
+            $client = new Client();
+            $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+                'form_params' => [
+                    'key' => '6d207e02198a847aa98d0a2a901485a5',
+                    'action' => 'upload',
+                    'source' => $image,
+                    'format' => 'json'
+                ]
+            ]);
+
+            $get = $res->getBody()->getContents();
+            $data  = json_decode($get);
+            $foto = $data->image->display_url;
         }
 
         $params = [
-            'user_id' => $request->user_id,
-            'no_hp' => $request->no_hp,
+            'nama' => $request->nama,
+            'email' => $request->email,
             'kode_member' => $request->kode_member ?? rand(999999999,999999999999),
-            'saldo' => $request->saldo,
+            'no_hp' => $request->no_hp,
+            'password' => bcrypt($request->password),
         ];
+        $params['foto'] = $foto ?? 'https://i.ibb.co/cFZfrYC/administrator.png';
 
-        $member = Member::create($params);
-        return $this->responseOk($member, 200, 'Sukses Buat Member');
+        $user = User::create($params);
+        $user->assignRole('member');
+
+        return $this->responseOk($user, 201, 'Member berhasil ditambahkan');
     }
 
     /**
@@ -74,7 +98,23 @@ class MemberController extends BaseController
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $user->load('member');
+        if ($user->hasRole('member')) {
+            return $this->responseOk($user);
+        } else {
+            return $this->responseError('Tidak ada member dengan ID ini');
+        }
+    }
+
+    public function kodeMember($kode_member)
+    {
+        $user = User::role('member')->where('kode_member', $kode_member)->get();
+        if ($user == []) {
+            return $this->responseError('Tidak ada member dengan Kode Member ini');
+        } else {
+            return $this->responseOk($user);
+        }
     }
 
     /**
@@ -98,27 +138,53 @@ class MemberController extends BaseController
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'integer',
+            'nama' => 'string',
+            'email' => 'email|unique:users',
+            'foto' => 'file|image',
+            'kode_member' => 'integer|unique:users',
             'no_hp' => 'string',
-            'kode_member' => 'integer',
-            'saldo' => 'integer'
+            'password' => 'confirmed',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Ubah Member', 422, $validator->errors());
+            return $this->responseError('Member gagal diupdate', 422, $validator->errors());
         }
 
-        $member = Member::find($id);
+        if ($request->foto) {
+            $image = base64_encode(file_get_contents(request('foto')));
+            $client = new Client();
+            $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+                'form_params' => [
+                    'key' => '6d207e02198a847aa98d0a2a901485a5',
+                    'action' => 'upload',
+                    'source' => $image,
+                    'format' => 'json'
+                ]
+            ]);
+
+            $get = $res->getBody()->getContents();
+            $data  = json_decode($get);
+            $foto = $data->image->display_url;
+        }
+
+        $user = User::find($id);
 
         $params = [
-            'user_id' => $request->user_id ?? $member->user_id,
-            'no_hp' => $request->no_hp ?? $member->no_hp,
-            'kode_member' => $request->kode_member ?? $member->kode_member,
-            'saldo' => $request->saldo ?? $member->saldo,
+            'nama' => $request->nama ?? $user->nama,
+            'email' => $request->email ?? $user->email,
+            'password' => bcrypt($request->password) ?? $user->password,
+            'foto' => $foto ?? $user->foto,
+            'kode_member' => $request->kode_member ?? $user->kode_member,
+            'no_hp' => $request->no_hp ?? $user->no_hp,
         ];
+        $params['foto'] = $foto ?? $user->foto;
 
-        $member->update($params);
-        return $this->responseOk($member, 200, 'Sukses Ubah Member');
+        if ($user->hasRole('member')) {
+            $user->update($params);
+            return $this->responseOk($user, 200, 'Member berhasil diupdate');
+        } else {
+            return $this->responseError('Ini bukan akun member');
+        }
     }
 
     /**
@@ -129,9 +195,47 @@ class MemberController extends BaseController
      */
     public function destroy($id)
     {
-        $member = Member::find($id);
-        $member->delete();
-
-        return $this->responseOk(null, 200, 'Sukses Hapus Member');
+        $user = User::find($id);
+        if ($user == []) {
+            return $this->responseError('Tidak ada akun dengan ID ini');
+        } elseif ($user->hasRole('member')) {
+            $user->delete();
+            return $this->responseOk(null, 200, 'Member berhasil dihapus');
+        } else {
+            return $this->responseError('Ini bukan akun member');
+        }
     }
+
+    public function saldo()
+    {
+        $user = Auth::user();
+        $member = Member::where('user_id', Auth::user()->id)->get();
+        if ($user->hasRole('member')) {
+            return $this->responseOk($member);
+        } else {
+            return $this->responseError('Ini bukan akun member');
+        }
+    }
+    public function topup(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'saldo' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->responseError('Saldo gagal ditambah', 422, $validator->errors());
+        }
+        $user = User::with('member')->find(Auth::user()->id);
+        $member = Member::where('user_id', Auth::user()->id);
+
+        $params['saldo'] = $request->saldo + $user->member->saldo;
+        if ($user->hasRole('member')) {
+            $member->update($params);
+            return $this->responseOk($member->get(), 200, 'Member berhasil topup');
+        } else {
+            return $this->responseError('Ini bukan akun member');
+        }
+    }
+
+
 }
