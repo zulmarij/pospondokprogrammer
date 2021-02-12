@@ -69,15 +69,15 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('member/{id}', 'MemberController@update');
     Route::delete('member/{id}', 'MemberController@destroy');
 
+    Route::get('pengeluaran', 'PengeluaranController@index');
+    Route::post('pengeluaran', 'PengeluaranController@store');
+    Route::post('pengeluaran/{id}', 'PengeluaranController@update');
+    Route::delete('pengeluaran/{id}', 'PengeluaranController@destroy');
+
     Route::get('role', 'RoleController@index');
     Route::post('role', 'RoleController@store');
     Route::post('role/{id}', 'RoleController@update');
     Route::delete('role/{id}', 'RoleController@destroy');
-
-    Route::get('pengeluaran', 'PengeluaranController@index');
-    Route::post('pengeluaran', 'PengeluaranController@store');
-    Route::post('pengeluaran/{id}', 'PengeluaranController@update');
-    Route::delete('pengeluaran{id}', 'PengeluaranController@destroy');
 
     Route::get('penjualan', 'PenjualanController@index');
     Route::post('penjualan', 'PenjualanController@store');

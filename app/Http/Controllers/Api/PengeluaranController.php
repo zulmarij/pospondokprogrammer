@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\BaseController;
 use App\Pengeluaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PengeluaranController extends Controller
+class PengeluaranController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,11 @@ class PengeluaranController extends Controller
     {
         $pengeluaran = Pengeluaran::get();
 
-        if (empty($pengeluaran)) {
-            return $this->responseError('Pengeluaran Kosong', 403);
+        if ($pengeluaran == []) {
+            return $this->responseError('Pengeluaran belum ada');
+        }else {
+            return $this->responseOk($pengeluaran);
         }
-        return $this->responseOk($pengeluaran, 200, 'Sukses Liat Data Pengeluaran');
     }
 
     /**
@@ -43,21 +44,21 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'jenis_pengeluaran' => 'required|string',
-            'nominal' => 'required|integer',
+            'tipe' => 'required|string',
+            'biaya' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Buat Pengeluaran', 422, $validator->errors());
+            return $this->responseError('Pengeluaran gagal ditambah', 422, $validator->errors());
         }
 
         $params = [
-            'jenis_pengeluaran' => $request->jenis_pengeluaran,
-            'nominal' => $request->nominal,
+            'tipe' => $request->tipe,
+            'biaya' => $request->biaya,
         ];
 
         $pengeluaran = Pengeluaran::create($params);
-        return $this->responseOk($pengeluaran, 200, 'Sukses Buat Pengeluaran');
+        return $this->responseOk($pengeluaran, 201, 'Pengeluaran berhasil ditambah');
     }
 
     /**
@@ -92,23 +93,23 @@ class PengeluaranController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'jenis_pengeluaran' => 'string',
-            'nominal' => 'integer',
+            'tipe' => 'string',
+            'biaya' => 'integer',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Gagal Ubah Pengeluaran', 422, $validator->errors());
+            return $this->responseError('Pengeluaran gagal diupdate', 422, $validator->errors());
         }
 
         $pengeluaran = Pengeluaran::find($id);
 
         $params = [
-            'jenis_pengeluaran' => $request->jenis_pengeluaran ?? $pengeluaran->jenis_pengeluaran,
-            'nominal' => $request->nominal ?? $pengeluaran->nominal,
+            'tipe' => $request->tipe ?? $pengeluaran->tipe,
+            'biaya' => $request->biaya ?? $pengeluaran->biaya,
         ];
 
         $pengeluaran->update($params);
-        return $this->responseOk($pengeluaran, 200, 'Sukses Ubah Pengeluaran');
+        return $this->responseOk($pengeluaran, 200, 'Pengeluaran berhasil diupdate');
     }
 
     /**
@@ -122,6 +123,6 @@ class PengeluaranController extends Controller
         $pengeluaran = Pengeluaran::find($id);
         $pengeluaran->delete();
 
-        return $this->responseOk(null, 200, 'Sukses Hapus Pengeluaran');
+        return $this->responseOk(null, 200, 'Pengeluaran berhasil dihapus');
     }
 }
