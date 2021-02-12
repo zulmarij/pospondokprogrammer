@@ -49,6 +49,11 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('kasir/{id}', 'KasirController@update');
     Route::delete('kasir/{id}', 'KasirController@destroy');
 
+    Route::get('profil', 'ProfilController@index');
+    Route::post('profil', 'ProfilController@update');
+    Route::post('profil/password', 'ProfilController@change');
+    Route::delete('profil', 'ProfilController@destroy');
+
     Route::get('user', 'UserController@index');
     Route::post('user', 'UserController@store');
     Route::post('user/{id}', 'UserController@update');
@@ -58,10 +63,6 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('role', 'RoleController@store');
     Route::post('role/{id}', 'RoleController@update');
     Route::delete('role/{id}', 'RoleController@destroy');
-
-    Route::get('profil', 'ProfilController@index');
-    Route::post('profil', 'ProfilController@update');
-    Route::delete('profil', 'ProfilController@destroy');
 
     Route::get('member', 'MemberController@index');
     Route::post('member', 'MemberController@store');

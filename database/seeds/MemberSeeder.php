@@ -14,8 +14,6 @@ class MemberSeeder extends Seeder
     {
         Member::create([
             'user_id' => 5,
-            'no_hp' => '080808080808',
-            'kode_member' => rand(999999999,999999999999),
             'saldo' => 100000
         ]);
     }
