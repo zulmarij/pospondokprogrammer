@@ -129,7 +129,7 @@ class BarangController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'string',
-            'uid' => 'integer|unique:barangs',
+            'uid' => 'integer',
             'harga_beli' => 'integer',
             'harga_jual' => 'integer',
             'kategori_id' => 'integer',

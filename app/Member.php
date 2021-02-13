@@ -15,4 +15,9 @@ class Member extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function penjualan()
+    {
+        return $this->hasOne(Penjualan::class);
+    }
 }

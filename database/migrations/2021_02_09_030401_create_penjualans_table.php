@@ -17,10 +17,10 @@ class CreatePenjualansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('barang_id');
             $table->integer('jumlah_barang');
-            $table->integer('harga_total');
+            $table->bigInteger('total_harga');
             $table->bigInteger('dibayar');
             $table->bigInteger('kembalian');
-            $table->bigInteger('kode_member');
+            $table->unsignedBigInteger('member_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

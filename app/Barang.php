@@ -20,4 +20,9 @@ class Barang extends Model
     {
         return $this->hasOne(Pembelian::class);
     }
+
+    public function penjualan()
+    {
+        return $this->hasOne(Penjualan::class);
+    }
 }

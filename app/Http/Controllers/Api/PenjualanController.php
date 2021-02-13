@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Barang;
+use App\Http\Controllers\Api\BaseController;
+use App\Member;
 use App\Penjualan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
-class PenjualanController extends Controller
+class PenjualanController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +22,9 @@ class PenjualanController extends Controller
         $penjualan = Penjualan::get();
 
         if (empty($penjualan)) {
-            return $this->responseError('Penjualan Kosong', 403);
+            return $this->responseError('Penjualan belum ada', 403);
         }
-        return $this->responseOk($penjualan, 200, 'Sukses Liat Data Penjualan');
+        return $this->responseOk($penjualan);
     }
 
     /**
@@ -45,27 +48,36 @@ class PenjualanController extends Controller
         $validator = Validator::make($request->all(), [
             'barang_id' => 'required|integer',
             'jumlah_barang' => 'required|integer',
-            'harga_total' => 'required|integer',
             'dibayar' => 'required|integer',
-            'kembalian' => 'required|integer',
-            'kode_member' => 'integer',
+            'member_id' => 'integer',
         ]);
 
         if ($validator->fails()) {
             return $this->responseError('Gagal Buat Penjualan', 422, $validator->errors());
         }
 
+        $user = Auth::user();
+        $barang = Barang::find($request->barang_id);
+        $member = Member::find($request->member_id);
         $params = [
             'barang_id' => $request->barang_id,
             'jumlah_barang' => $request->jumlah_barang,
-            'harga_total' => $request->harga_total,
+            'total_harga' => $barang->harga_jual * $request->jumlah_barang,
             'dibayar' => $request->dibayar,
-            'kembalian' => $request->kembalian,
-            'kode_member' => $request->kode_member ?? 0,
+            'kembalian' => $barang->harga_jual * $request->jumlah_barang > $request->dibayar ? 0 : $barang->harga_jual * $request->jumlah_barang - $request->dibayar,
+            'member_id' => $request->member_id ?? 0,
+            'user_id' => $user->id
         ];
 
-        $penjualan = Penjualan::create($params);
-        return $this->responseOk($penjualan, 200, 'Sukses Buat Penjualan');
+        if ($params['dibayar'] < $params['total_harga']) {
+            return $this->responseError('Bayaran kurang');
+        } elseif ($params['member_id'] == 0) {
+            $penjualan = Penjualan::create($params);
+            return $this->responseOk($penjualan->load('user_id'), 201, 'Penjualan berhasil dibuat');
+        } else {
+            $penjualan = Penjualan::create($params);
+            return $this->responseOk($penjualan->load('user_id'), 201, 'Penjualan berhasil dibuat');
+        }
     }
 
     /**
@@ -102,10 +114,8 @@ class PenjualanController extends Controller
         $validator = Validator::make($request->all(), [
             'barang_id' => 'integer',
             'jumlah_barang' => 'integer',
-            'harga_total' => 'integer',
             'dibayar' => 'integer',
-            'kembalian' => 'integer',
-            'kode_member' => 'integer',
+            'member_id' => 'integer',
         ]);
 
         if ($validator->fails()) {
@@ -117,10 +127,10 @@ class PenjualanController extends Controller
         $params = [
             'barang_id' => $request->barang_id ?? $penjualan->barang_id,
             'jumlah_barang' => $request->jumlah_barang ?? $penjualan->jumlah_barang,
-            'harga_total' => $request->harga_total ?? $penjualan->harga_total,
+            'total_harga' => $request->total_harga ?? $penjualan->total_harga,
             'dibayar' => $request->dibayar ?? $penjualan->dibayar,
             'kembalian' => $request->kembalian ?? $penjualan->kembalian,
-            'kode_member' => $request->kode_member ?? $penjualan->kode_member,
+            'member_id' => $request->member_id ?? $penjualan->member_id,
         ];
 
         $penjualan->update($params);
