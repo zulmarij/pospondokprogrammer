@@ -15,4 +15,9 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function pembelian()
+    {
+        return $this->hasOne(Pembelian::class);
+    }
 }

@@ -10,4 +10,9 @@ class Supplier extends Model
     use FormatDate;
 
     protected $guarded = [];
+
+    public function pembelian()
+    {
+        return $this->hasOne(Pembelian::class);
+    }
 }

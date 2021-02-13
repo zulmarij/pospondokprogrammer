@@ -9,8 +9,15 @@ class Pembelian extends Model
 {
     use FormatDate;
 
+    protected $guarded = [];
+
     public function supplier()
     {
-        return $this->hasMany(Supplier::class);
+        return $this->belongsTo(Supplier::class);
+    }
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class);
     }
 }
