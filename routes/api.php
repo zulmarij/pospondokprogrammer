@@ -80,6 +80,7 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::delete('pembelian/{id}', 'PembelianController@destroy');
 
     Route::get('penjualan', 'PenjualanController@index');
+    Route::get('penjualan/{id}', 'PenjualanController@show');
     Route::post('penjualan', 'PenjualanController@store');
     Route::post('penjualan/{id}', 'PenjualanController@update');
     Route::delete('penjualan{id}', 'PenjualanController@destroy');

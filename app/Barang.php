@@ -18,11 +18,11 @@ class Barang extends Model
 
     public function pembelian()
     {
-        return $this->hasOne(Pembelian::class);
+        return $this->hasMany(Pembelian::class);
     }
 
     public function penjualan()
     {
-        return $this->hasOne(Penjualan::class);
+        return $this->hasMany(Penjualan::class);
     }
 }

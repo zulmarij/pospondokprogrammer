@@ -13,6 +13,6 @@ class Supplier extends Model
 
     public function pembelian()
     {
-        return $this->hasOne(Pembelian::class);
+        return $this->hasMany(Pembelian::class);
     }
 }
