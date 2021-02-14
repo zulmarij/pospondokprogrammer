@@ -18,7 +18,7 @@ class PembelianController extends BaseController
     public function index()
     {
         $pembelian = Pembelian::latest()->get();
-        $pembelian->load('barang', 'supplier');
+        $pembelian->load('barang:id,nama','supplier:id,nama');
         if ($pembelian == []) {
             return $this->responseError('Pengeluaran belum ada');
         } else {
