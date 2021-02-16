@@ -31,4 +31,24 @@ class LaporanController extends BaseController
         $response['saldo'] = $response['pemasukan'] - $response['pengeluaran'];
         return $this->responseOk($response, 200,'Data harian berhasil ditampilkan');
     }
+
+    public function monthlyReport()
+    {
+        $penjualanTanggal = Penjualan::whereMonth('updated_at', date('m'))->get()->first();
+        $penjualanTotalHarga = Penjualan::whereMonth('updated_at', date('m'))->sum('total_harga');
+        $pengeluaranBiaya = Pengeluaran::whereMonth('updated_at', date('m'))->sum('biaya');
+        $pembelianTotalBiaya = Pembelian::whereMonth('updated_at', date('m'))->sum('total_biaya');
+
+        $response = [
+            'pemasukan' => $penjualanTotalHarga,
+            'pengeluaran' => $pengeluaranBiaya + $pembelianTotalBiaya,
+            'report' => [
+                'penjualan' => $penjualanTotalHarga,
+                'pembelian' => $pembelianTotalBiaya,
+                'alokasi' => $pengeluaranBiaya,
+            ]
+        ];
+        $response['saldo'] = $response['pemasukan'] - $response['pengeluaran'];
+        return $this->responseOk($response, 200,'Data bulanan berhasil ditampilkan');
+    }
 }

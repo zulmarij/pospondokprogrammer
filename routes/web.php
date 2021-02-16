@@ -1424,3 +1424,7 @@ Route::get('/password/reset', function() {
 Route::get('/', function() {
     return redirect('/admin');
 });
+
+Route::group(['middleware' => 'auth:web', 'namespace' => 'Admin'], function () {
+    Route::get('admin/user', 'UserController@index')->name('user.index');
+});

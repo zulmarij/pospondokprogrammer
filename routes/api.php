@@ -79,7 +79,8 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('pembelian/{id}', 'PembelianController@update');
     Route::delete('pembelian/{id}', 'PembelianController@destroy');
 
-    Route::get('penjualan', 'PenjualanController@index');
+    Route::get('penjualan/dibayar', 'PenjualanController@dibayar');
+    Route::get('penjualan/belumbayar', 'PenjualanController@belumbayar');
     Route::get('penjualan/{id}', 'PenjualanController@show');
     Route::post('penjualan', 'PenjualanController@store');
     Route::post('penjualan/{id}', 'PenjualanController@update');
@@ -93,6 +94,7 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('role/{id}', 'RoleController@update');
     Route::delete('role/{id}', 'RoleController@destroy');
 
-    Route::get('laporan', 'LaporanController@dailyReport');
+    Route::get('laporan/harian', 'LaporanController@dailyReport');
+    Route::get('laporan/bulanan', 'LaporanController@monthlyReport');
 
 });

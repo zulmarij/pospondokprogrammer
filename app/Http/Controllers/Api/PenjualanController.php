@@ -19,12 +19,22 @@ class PenjualanController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dibayar()
     {
-        $penjualan = Penjualan::latest()->get();
-        $penjualan->load('barang', 'member');
+        $penjualan = Penjualan::where('dibayar', '>', 0)->latest()->get();
+        $penjualan->load('barang', 'member', 'user');
         if ($penjualan == []) {
-            return $this->responseError('Penjualan belum ada', 403);
+            return $this->responseError('Data penjualan yang sudah dibayar tidak ada', 403);
+        }
+        return $this->responseOk($penjualan);
+    }
+
+    public function belumbayar()
+    {
+        $penjualan = Penjualan::where('dibayar', '=', 0)->latest()->get();
+        $penjualan->load('barang');
+        if ($penjualan == []) {
+            return $this->responseError('Data Penjualan yang belum dibayar tidak ada', 403);
         }
         return $this->responseOk($penjualan);
     }
@@ -50,17 +60,13 @@ class PenjualanController extends BaseController
         $validator = Validator::make($request->all(), [
             'barang_id' => 'required|integer',
             'jumlah_barang' => 'required|integer',
-            // 'dibayar' => 'integer',
-            // 'member_id' => 'integer',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Penjualan gagal ditambah', 422, $validator->errors());
+            return $this->responseError('Barang gagal ditambah ke keranjang', 422, $validator->errors());
         }
 
-        $user = User::find(Auth::user()->id);
         $barang = Barang::find($request->barang_id);
-        $member = Member::find($request->member_id);
         $params = [
             'barang_id' => $request->barang_id,
             'jumlah_barang' => $request->jumlah_barang,
@@ -71,40 +77,13 @@ class PenjualanController extends BaseController
             'user_id' => 0
         ];
 
-        // if ($params['dibayar'] && $params['member_id'] !== null) {
-        //     return $this->responseError('Pilih salah satu!! mau bayar langsung atau memnggunakan saldo member jika ada');
-        // } elseif ($request->has('dibayar') && $request->dibayar == null) {
-        //     return $this->responseError('Bayaran tidak ada (Gunakan saldo member jika ada dan cukup)');
-        // } elseif ($request->jumlah_barang > $barang->stok) {
-        //     return $this->responseError('Stok barang sisa ' . $barang->stok);
-        // } elseif ($request->has('dibayar') && $params['dibayar'] < $params['total_harga']) {
-        //     return $this->responseError('Bayaran kurang ' . $params['kembalian']);
-        // } elseif ($request->has('member_id') && $member == null) {
-        //     return $this->responseError('Member ID ' . $request->member_id . ' tidak ada');
-        // } elseif ($request->has('member_id') && $params['total_harga'] > $member->saldo) {
-        //     return $this->responseError('Saldo member ' . $member->saldo . ' tidak cukup');
-        // } elseif ($request->has('member_id')) {
-        //     $saldomember['saldo'] = $member->saldo - ($params['total_harga'] - $barang->diskon);
-        //     $member->update($saldomember);
-        // $params['kembalian'] = 0;
-        // $params['dibayar'] = $params['total_harga'] - ($barang->diskon * $params['jumlah_barang']);
-        // $penjualan = Penjualan::create($params);
-        //     $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
-        //     //     $barang->update($data);
-        //     $data['penjualan_id'] = $penjualan->id;
-        //     DetailPenjualan::create($data);
-        //     return $this->responseOk($penjualan->load('member', 'user'), 201, 'Penjualan dengan diskon ' . $barang->diskon * $params['jumlah_barang'] . ' berhasil ditambah');
-        // } else {
-        // $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
-        // $barang->update($data);
-
         if ($request->jumlah_barang > $barang->stok) {
             return $this->responseError('Stok barang sisa ' . $barang->stok);
         }
         $penjualan = Penjualan::create($params);
         $data['penjualan_id'] = $penjualan->id;
         DetailPenjualan::create($data);
-        return $this->responseOk($penjualan->load('user'), 201, 'Penjualan berhasil ditambah ke detail penjualan');
+        return $this->responseOk($penjualan->load('user'), 201, 'Barang berhasil ditambah ke keranjang');
     }
 
     /**
@@ -116,7 +95,7 @@ class PenjualanController extends BaseController
     public function show($id)
     {
         $penjualan = Penjualan::find($id);
-        $penjualan->load('member', 'user');
+        $penjualan->load('barang', 'member', 'user');
         return $this->responseOk($penjualan);
     }
 
@@ -140,70 +119,36 @@ class PenjualanController extends BaseController
      */
     public function update(Request $request, $id)
     {
+
         $validator = Validator::make($request->all(), [
             'barang_id' => 'integer',
             'jumlah_barang' => 'integer',
-            'dibayar' => 'integer',
-            'member_id' => 'integer',
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Penjualan gagal diupdate', 422, $validator->errors());
+            return $this->responseError('Barang di keranjang gagal diupdate', 422, $validator->errors());
         }
-
         $penjualan = Penjualan::find($id);
-        $user = User::find(Auth::user()->id);
-        $barangOld = Barang::find($penjualan->barang_id);
-        $memberOld = Member::find($penjualan->member_id);
 
+        if ($penjualan->dibayar > 0) {
+            return $this->responseError('Barang yang sudah dibayar tidak bisa di update atau ditukar');
+        }
+        $barang = Barang::find($request->barang_id ?? $penjualan->barang_id);
         $params = [
             'barang_id' => $request->barang_id ?? $penjualan->barang_id,
             'jumlah_barang' => $request->jumlah_barang ?? $penjualan->jumlah_barang,
-            'dibayar' => $request->dibayar ?? $penjualan->dibayar,
-            'member_id' => $request->member_id ?? $penjualan->member_id,
-            'user_id' => $user->id
+            'dibayar' => 0,
+            'kembalian' => 0,
+            'member_id' => null,
+            'user_id' => 0
         ];
-        $barang = Barang::find($params['barang_id']);
-        $member = Member::find($params['member_id']);
+        $params['total_harga'] = $barang->harga_jual * $params['jumlah_barang'];
 
-        $params['total_harga'] = $params['jumlah_barang'] * $barang->harga_jual;
-        $params['kembalian'] = $params['dibayar'] - ($barang->harga_jual * $params['jumlah_barang']);
-
-        if ($request->has('dibayar') && $request->has('member_id') != null) {
-            return $this->responseError('Pilih salah satu!! mau bayar langsung atau memnggunakan saldo member jika ada');
-        } elseif ($request->has('dibayar') && $params['dibayar'] == null) {
-            return $this->responseError('Bayaran tidak ada (Gunakan saldo member jika ada dan cukup)');
-        } elseif ($params['jumlah_barang'] > $barang->stok) {
+        if ($params['jumlah_barang'] > $barang->stok) {
             return $this->responseError('Stok barang sisa ' . $barang->stok);
-        } elseif ($request->has('dibayar') && $params['dibayar'] < $params['total_harga']) {
-            return $this->responseError('Bayaran kurang ' . $params['kembalian']);
-        } elseif ($request->has('member_id') && $member == null) {
-            return $this->responseError('Member ID ' . $params['member_id'] . ' tidak ada');
-        } elseif ($request->has('member_id') && $params['total_harga'] > $member->saldo) {
-            return $this->responseError('Saldo member ' . $member->saldo . ' tidak cukup');
-        } elseif ($request->has('member_id') || $params['member_id'] !== null) {
-            $saldomemberOld['saldo'] = $memberOld->saldo + $penjualan->dibayar;
-            $member->update($saldomemberOld);
-            $stokOld['stok'] = $barangOld->stok + $penjualan->jumlah_barang;
-            $barang->update($stokOld);
-
-            $saldomember['saldo'] = $member->saldo - ($params['total_harga'] - $barang->diskon);
-            $member->update($saldomember);
-            $params['kembalian'] = 0;
-            $params['dibayar'] = $params['total_harga'] - $barang->diskon;
-            $penjualan->update($params);
-            $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
-            $barang->update($data);
-            return $this->responseOk($penjualan->load('member', 'user'), 200, 'Penjualan dengan diskon ' . $barang->diskon . ' berhasil diupdate');
-        } else {
-            $stokOld['stok'] = $barangOld->stok + $penjualan->jumlah_barang;
-            $barang->update($stokOld);
-
-            $penjualan->update($params);
-            $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
-            $barang->update($data);
-            return $this->responseOk($penjualan->load('member', 'user'), 200, 'Penjualan berhasil di update');
         }
+        $penjualan->update($params);
+        return $this->responseOk($penjualan, 200, 'Barang di keranjang berhasil di update');
     }
 
     /**
@@ -215,24 +160,15 @@ class PenjualanController extends BaseController
     public function destroy($id)
     {
         $penjualan =  Penjualan::find($id);
-        $user = User::find(Auth::user()->id);
-        $barang = Barang::find($penjualan->barang_id);
-        $member = Member::find($penjualan->member_id);
+        $detailpenjualan = DetailPenjualan::where('penjualan_id', $penjualan->id);
 
-        if ($penjualan->member_id == null) {
-            $stok['stok'] = $barang->stok + $penjualan->jumlah_barang;
-            $barang->update($stok);
-            $penjualan->delete();
-            return $this->responseOk(null, 200, 'Penjualan berhasil dihapus. stok barang ' . $stok['stok'] . ' dikembalikan');
-        } else {
-            $saldomember['saldo'] = $member->saldo + $penjualan->dibayar;
-            $member->update($saldomember);
-            $stok['stok'] = $barang->stok + $penjualan->jumlah_barang;
-            $barang->update($stok);
-            $penjualan->delete();
-            return $this->responseOk(null, 200, 'Penjualan berhasil dihapus. stok barang ' . $stok['stok'] . ' dan ' . 'saldo member ' . $saldomember['saldo'] . ' dikembalikan');
+        if ($penjualan->dibayar > 0) {
+            return $this->responseError('Barang yang sudah dibayar tidak bisa di hapus atau dikembalikan');
         }
 
+        $detailpenjualan->delete();
         $penjualan->delete();
+
+        return $this->responseOk($penjualan, 200, 'Barang di keranjang berhasil di hapus');
     }
 }

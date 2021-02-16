@@ -34,6 +34,27 @@ class DetailPenjualanController extends BaseController
         return $this->responseOk($array, 200, 'Barang yang di request');
     }
 
+    public function dibeli()
+    {
+        $detailPenjualan = DetailPenjualan::with('penjualan')->where('status', 1)->get();
+        $array = array();
+        foreach ($detailPenjualan as $data) {
+            $array[] = [
+                'id' => $data->id,
+                'uid' => $data->penjualan->barang->uid,
+                'nama' => $data->penjualan->barang->nama,
+                'jumlah_barang' => $data->penjualan->jumlah_barang,
+                'total_harga' => $data->penjualan->total_harga
+
+            ];
+        }
+
+        if ($array == []) {
+            return $this->responseError('Data barang yang sudah dibeli atau dikonfirmasi kosong');
+        }
+        return $this->responseOk($array, 200, 'Data barang sudah yang dibeli atau dikonfirmasi');
+    }
+
     public function confirm(Request $request)
     {
         $getdetailPenjualan = DetailPenjualan::where('status', 0)->get()->load('penjualan');

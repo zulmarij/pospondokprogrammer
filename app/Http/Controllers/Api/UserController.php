@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Absent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
@@ -34,6 +35,9 @@ class UserController extends BaseController
                 'token' => $user->createToken('pos')->accessToken,
                 'user' => $user,
             ];
+
+            $data['user_id'] = $user->id;
+            Absent::create($data);
 
             return $this->responseOk($response);
         } else {
