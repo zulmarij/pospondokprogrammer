@@ -85,6 +85,9 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('penjualan/{id}', 'PenjualanController@update');
     Route::delete('penjualan/{id}', 'PenjualanController@destroy');
 
+    Route::get('detailpenjualan/request', 'DetailPenjualanController@request');
+    Route::post('detailpenjualan/confirm', 'DetailPenjualanController@confirm');
+
     Route::get('role', 'RoleController@index');
     Route::post('role', 'RoleController@store');
     Route::post('role/{id}', 'RoleController@update');

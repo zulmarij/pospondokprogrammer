@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Barang;
+use App\DetailPenjualan;
 use App\Http\Controllers\Api\BaseController;
 use Illuminate\Support\Facades\Auth;
 use App\Member;
@@ -49,8 +50,8 @@ class PenjualanController extends BaseController
         $validator = Validator::make($request->all(), [
             'barang_id' => 'required|integer',
             'jumlah_barang' => 'required|integer',
-            'dibayar' => 'integer',
-            'member_id' => 'integer',
+            // 'dibayar' => 'integer',
+            // 'member_id' => 'integer',
         ]);
 
         if ($validator->fails()) {
@@ -64,39 +65,46 @@ class PenjualanController extends BaseController
             'barang_id' => $request->barang_id,
             'jumlah_barang' => $request->jumlah_barang,
             'total_harga' => $barang->harga_jual * $request->jumlah_barang,
-            'dibayar' => $request->dibayar,
-            'kembalian' => $request->dibayar - $barang->harga_jual * $request->jumlah_barang,
-            'member_id' => $request->member_id,
-            'user_id' => $user->id
+            'dibayar' => 0,
+            'kembalian' => 0,
+            'member_id' => null,
+            'user_id' => 0
         ];
 
-        if ($params['dibayar'] && $params['member_id'] !== null) {
-            return $this->responseError('Pilih salah satu!! mau bayar langsung atau memnggunakan saldo member jika ada');
-        } elseif ($request->has('dibayar') && $request->dibayar == null) {
-            return $this->responseError('Bayaran tidak ada (Gunakan saldo member jika ada dan cukup)');
-        } elseif ($request->jumlah_barang > $barang->stok) {
+        // if ($params['dibayar'] && $params['member_id'] !== null) {
+        //     return $this->responseError('Pilih salah satu!! mau bayar langsung atau memnggunakan saldo member jika ada');
+        // } elseif ($request->has('dibayar') && $request->dibayar == null) {
+        //     return $this->responseError('Bayaran tidak ada (Gunakan saldo member jika ada dan cukup)');
+        // } elseif ($request->jumlah_barang > $barang->stok) {
+        //     return $this->responseError('Stok barang sisa ' . $barang->stok);
+        // } elseif ($request->has('dibayar') && $params['dibayar'] < $params['total_harga']) {
+        //     return $this->responseError('Bayaran kurang ' . $params['kembalian']);
+        // } elseif ($request->has('member_id') && $member == null) {
+        //     return $this->responseError('Member ID ' . $request->member_id . ' tidak ada');
+        // } elseif ($request->has('member_id') && $params['total_harga'] > $member->saldo) {
+        //     return $this->responseError('Saldo member ' . $member->saldo . ' tidak cukup');
+        // } elseif ($request->has('member_id')) {
+        //     $saldomember['saldo'] = $member->saldo - ($params['total_harga'] - $barang->diskon);
+        //     $member->update($saldomember);
+        // $params['kembalian'] = 0;
+        // $params['dibayar'] = $params['total_harga'] - ($barang->diskon * $params['jumlah_barang']);
+        // $penjualan = Penjualan::create($params);
+        //     $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
+        //     //     $barang->update($data);
+        //     $data['penjualan_id'] = $penjualan->id;
+        //     DetailPenjualan::create($data);
+        //     return $this->responseOk($penjualan->load('member', 'user'), 201, 'Penjualan dengan diskon ' . $barang->diskon * $params['jumlah_barang'] . ' berhasil ditambah');
+        // } else {
+        // $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
+        // $barang->update($data);
+
+        if ($request->jumlah_barang > $barang->stok) {
             return $this->responseError('Stok barang sisa ' . $barang->stok);
-        } elseif ($request->has('dibayar') && $params['dibayar'] < $params['total_harga']) {
-            return $this->responseError('Bayaran kurang ' . $params['kembalian']);
-        } elseif ($request->has('member_id') && $member == null) {
-            return $this->responseError('Member ID ' . $request->member_id . ' tidak ada');
-        } elseif ($request->has('member_id') && $params['total_harga'] > $member->saldo) {
-            return $this->responseError('Saldo member ' . $member->saldo . ' tidak cukup');
-        } elseif ($request->has('member_id')) {
-            $saldomember['saldo'] = $member->saldo - ($params['total_harga'] - $barang->diskon);
-            $member->update($saldomember);
-            $params['kembalian'] = 0;
-            $params['dibayar'] = $params['total_harga'] - $barang->diskon;
-            $penjualan = Penjualan::create($params);
-            $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
-            $barang->update($data);
-            return $this->responseOk($penjualan->load('member', 'user'), 201, 'Penjualan dengan diskon ' . $barang->diskon . ' berhasil ditambah');
-        } else {
-            $penjualan = Penjualan::create($params);
-            $data['stok'] = $barang->stok - $penjualan->jumlah_barang;
-            $barang->update($data);
-            return $this->responseOk($penjualan->load('member', 'user'), 201, 'Penjualan berhasil ditambah');
         }
+        $penjualan = Penjualan::create($params);
+        $data['penjualan_id'] = $penjualan->id;
+        DetailPenjualan::create($data);
+        return $this->responseOk($penjualan->load('user'), 201, 'Penjualan berhasil ditambah ke detail penjualan');
     }
 
     /**
@@ -161,7 +169,7 @@ class PenjualanController extends BaseController
         $params['total_harga'] = $params['jumlah_barang'] * $barang->harga_jual;
         $params['kembalian'] = $params['dibayar'] - ($barang->harga_jual * $params['jumlah_barang']);
 
-        if ($request->has('dibayar')&& $request->has('member_id') != null) {
+        if ($request->has('dibayar') && $request->has('member_id') != null) {
             return $this->responseError('Pilih salah satu!! mau bayar langsung atau memnggunakan saldo member jika ada');
         } elseif ($request->has('dibayar') && $params['dibayar'] == null) {
             return $this->responseError('Bayaran tidak ada (Gunakan saldo member jika ada dan cukup)');
@@ -222,7 +230,7 @@ class PenjualanController extends BaseController
             $stok['stok'] = $barang->stok + $penjualan->jumlah_barang;
             $barang->update($stok);
             $penjualan->delete();
-            return $this->responseOk(null, 200, 'Penjualan berhasil dihapus. stok barang ' . $stok['stok'] . ' dan ' . 'saldo member '. $saldomember['saldo'] . ' dikembalikan');
+            return $this->responseOk(null, 200, 'Penjualan berhasil dihapus. stok barang ' . $stok['stok'] . ' dan ' . 'saldo member ' . $saldomember['saldo'] . ' dikembalikan');
         }
 
         $penjualan->delete();

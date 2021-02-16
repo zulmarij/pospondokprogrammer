@@ -29,6 +29,6 @@ class LaporanController extends BaseController
             ]
         ];
         $response['saldo'] = $response['pemasukan'] - $response['pengeluaran'];
-        return $this->responseOk($response);
+        return $this->responseOk($response, 200,'Data harian berhasil ditampilkan');
     }
 }

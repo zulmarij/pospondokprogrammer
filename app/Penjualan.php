@@ -26,4 +26,9 @@ class Penjualan extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function detailpenjualan()
+    {
+        return $this->hasMany(DetailPenjualan::class);
+    }
+
 }
