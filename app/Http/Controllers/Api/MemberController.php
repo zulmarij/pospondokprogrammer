@@ -208,7 +208,7 @@ class MemberController extends BaseController
 
     public function saldo($id)
     {
-        $user = User::with('member')->find($id);
+        $user = User::where('user_id', $id);
         $member = Member::where('user_id', $user->id);
 
         return $this->responseOk($member);
@@ -223,7 +223,7 @@ class MemberController extends BaseController
         if ($validator->fails()) {
             return $this->responseError('Saldo gagal ditambah', 422, $validator->errors());
         }
-        $user = User::with('member')->find($id);
+        $user = User::where('user_id', $id);
         $member = Member::where('user_id', $user->id);
 
         $params['saldo'] = $request->saldo + $user->member->saldo;
