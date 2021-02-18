@@ -80,7 +80,7 @@ class DetailPenjualanController extends BaseController
                 'harga' => $data->penjualan->total_harga,
                 'diskon' => $data->penjualan->barang->diskon,
                 'member' => $data->penjualan->member->user->nama,
-                'kasir' => $data->penjualan->user->nama,
+                // 'kasir' => $data->penjualan->user->nama,
                 'tanggal' => $data->penjualan->updated_at,
 
             ];
