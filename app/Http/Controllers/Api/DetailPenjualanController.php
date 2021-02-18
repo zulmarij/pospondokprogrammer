@@ -79,8 +79,8 @@ class DetailPenjualanController extends BaseController
                 'jumlah' => $data->penjualan->jumlah_barang,
                 'harga' => $data->penjualan->total_harga,
                 'diskon' => $data->penjualan->barang->diskon,
-                // 'member' => $data->penjualan->member->user->nama,
-                // 'kasir' => $data->penjualan->user->nama,
+                'member' => $data->penjualan->member->user->nama,
+                'kasir' => $data->penjualan->user->nama,
                 'tanggal' => $data->penjualan->updated_at,
 
             ];
@@ -134,6 +134,7 @@ class DetailPenjualanController extends BaseController
                     'kembalian' => 0,
                     'data' => $array,
                 ];
+                return $this->responseOk($response, 200, 'Barang berhasil dibeli');
             }
         } else {
             foreach ($getdetailPenjualan as $data) {
@@ -164,6 +165,7 @@ class DetailPenjualanController extends BaseController
                     'kembalian' => $total_bayar - $total_harga,
                     'data' => $array,
                 ];
+                return $this->responseOk($response, 200, 'Barang berhasil dibeli');
             }
         }
 
