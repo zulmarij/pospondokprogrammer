@@ -15,6 +15,9 @@ echo 'Pospro Mart - Point Of Sales';
 elseif ($page_name === 'index_user') :
 echo 'Data User ' . $admin_name;
 
+elseif ($page_name === 'index_supplier') :
+echo 'Data Supplier ' . $admin_name;
+
 elseif ($page_name === 'index_barang') :
 echo 'Data Barang ' . $admin_name;
 
@@ -267,6 +270,12 @@ elseif ($page_name === 'index_user') :
 // echo 'Sales Admin ' . $admin_name;
 echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+
+elseif ($page_name === 'index_supplier') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+
 
 elseif ($page_name === 'index_barang') :
 // echo 'Sales Admin ' . $admin_name;

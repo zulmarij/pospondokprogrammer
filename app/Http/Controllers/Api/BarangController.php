@@ -11,15 +11,20 @@ class BarangController extends BaseController
 {
     public function search($data)
     {
-        $barang = Barang::where('nama', 'like', "%{$data}%")
-            ->orWhere('uid', 'like', "%{$data}%")
-            ->orWhere('harga_beli', 'like', "%{$data}%")
-            ->orWhere('harga_jual', 'like', "%{$data}%")
-            ->orWhere('kategori_id', 'like', "%{$data}%")
-            ->orWhere('merk', 'like', "%{$data}%")
-            ->orWhere('stok', 'like', "%{$data}%")
-            ->orWhere('diskon', 'like', "%{$data}%")
-            ->get();
+
+        $barang = Barang::with(['kategori'])
+        ->whereRaw('LOWER(nama) LIKE ?', ['%' . strtolower($data) . '%'])
+        ->orWhereRaw('LOWER(merk) LIKE ?', ['%' . strtolower($data) . '%'])
+        ->get();
+        // $barang = Barang::where('nama', 'like', "%{$data}%")
+            // ->orWhere('uid', 'like', "%{$data}%")
+            // ->orWhere('harga_beli', 'like', "%{$data}%")
+            // ->orWhere('harga_jual', 'like', "%{$data}%")
+            // ->orWhere('kategori_id', 'like', "%{$data}%")
+            // ->orWhere('merk', 'like', "%{$data}%")
+            // ->orWhere('stok', 'like', "%{$data}%")
+            // ->orWhere('diskon', 'like', "%{$data}%")
+            // ->get();
 
         return $this->responseOk($barang);
     }
