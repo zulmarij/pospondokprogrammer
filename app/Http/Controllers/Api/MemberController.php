@@ -214,7 +214,7 @@ class MemberController extends BaseController
     public function topup(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|integer',
+            // 'user_id' => 'required|integer',
             'saldo' => 'required|integer',
         ]);
 
