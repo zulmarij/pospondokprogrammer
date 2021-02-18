@@ -213,7 +213,7 @@ class MemberController extends BaseController
 
         return $this->responseOk($member);
     }
-    public function topup(Request $request)
+    public function topup(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|integer',
@@ -223,7 +223,7 @@ class MemberController extends BaseController
         if ($validator->fails()) {
             return $this->responseError('Saldo gagal ditambah', 422, $validator->errors());
         }
-        $user = User::with('member')->find(request('user_id'));
+        $user = User::with('member')->find($id);
         $member = Member::where('user_id', $user->id);
 
         $params['saldo'] = $request->saldo + $user->member->saldo;
