@@ -134,9 +134,9 @@ class UserController extends BaseController
 
         $image = base64_encode(file_get_contents(request('foto')));
         $client = new Client();
-        $res = $client->request('POST', 'https://api.imgbb.com/1/upload', [
+        $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
             'form_params' => [
-                'key' => 'b07a227db8a98165791eda2376549b1c',
+                'key' => '6d207e02198a847aa98d0a2a901485a5',
                 'action' => 'upload',
                 'source' => $image,
                 'format' => 'json'
@@ -215,9 +215,9 @@ class UserController extends BaseController
 
         $image = base64_encode(file_get_contents(request('foto')));
         $client = new Client();
-        $res = $client->request('POST', 'https://api.imgbb.com/1/upload', [
+        $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
             'form_params' => [
-                'key' => 'b07a227db8a98165791eda2376549b1c',
+                'key' => '6d207e02198a847aa98d0a2a901485a5',
                 'action' => 'upload',
                 'source' => $image,
                 'format' => 'json'

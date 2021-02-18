@@ -1427,4 +1427,14 @@ Route::get('/', function() {
 
 Route::group(['middleware' => 'auth:web', 'namespace' => 'Admin'], function () {
     Route::get('admin/user', 'UserController@index')->name('user.index');
+    Route::post('admin/user', 'UserController@store')->name('user.store');
+    Route::post('admin/user/{id}', 'UserController@update')->name('user.update');
+    Route::delete('admin/user/{id}', 'UserController@destroy')->name('user.destroy');
+
+    Route::get('admin/barang', 'BarangController@index')->name('barang.index');
+
+    Route::get('admin/kategori', 'KategoriController@index')->name('kategori.index');
+    Route::post('admin/kategori', 'KategoriController@store')->name('kategori.store');
+    Route::post('admin/kategori/{id}', 'KategoriController@update')->name('kategori.update');
+    Route::delete('admin/kategori/{id}', 'KategoriController@destroy')->name('kategori.destroy');
 });

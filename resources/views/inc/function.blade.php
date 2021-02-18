@@ -12,8 +12,14 @@ $admin_name = '| Pospro Mart - Point Of Sales';
 if ($page_name === 'admin') :
 echo 'Pospro Mart - Point Of Sales';
 //user
-elseif ($page_name === 'data_user') :
+elseif ($page_name === 'index_user') :
 echo 'Data User ' . $admin_name;
+
+elseif ($page_name === 'index_barang') :
+echo 'Data Barang ' . $admin_name;
+
+elseif ($page_name === 'index_kategori') :
+echo 'Data Kategori ' . $admin_name;
 
 
 
@@ -256,7 +262,18 @@ if ($page_name === 'admin') :
 // echo 'CORK Admin - Multipurpose Bootstrap Dashboard Template';
 echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
-elseif ($page_name === 'data_user') :
+
+elseif ($page_name === 'index_user') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+
+elseif ($page_name === 'index_barang') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+
+elseif ($page_name === 'index_kategori') :
 // echo 'Sales Admin ' . $admin_name;
 echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
