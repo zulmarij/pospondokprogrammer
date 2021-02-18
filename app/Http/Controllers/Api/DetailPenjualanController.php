@@ -85,7 +85,7 @@ class DetailPenjualanController extends BaseController
 
             ];
         }
-        dd($array);
+        // dd($array);
         $user = User::find(Auth::user()->id);
         $member = Member::find(request('member_id'));
 
