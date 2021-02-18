@@ -62,9 +62,9 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
 
     Route::get('member', 'MemberController@index');
     Route::get('member/kode_member/{kode_member}', 'MemberController@kodeMember');
-    Route::get('member/saldo/{id}', 'MemberController@saldo');
     Route::get('member/{id}', 'MemberController@show');
-    Route::post('member/topup/{id}', 'MemberController@topup');
+    Route::get('member/{id}/saldo', 'MemberController@saldo');
+    Route::post('member/{id}/topup', 'MemberController@topup');
     Route::post('member', 'MemberController@store');
     Route::post('member/{id}', 'MemberController@update');
     Route::delete('member/{id}', 'MemberController@destroy');
