@@ -208,9 +208,7 @@ class MemberController extends BaseController
 
     public function saldo($id)
     {
-        $user = User::where('user_id', $id);
-        $member = Member::where('user_id', $user->id);
-
+        $member = Member::where('user_id', $id)->get();
         return $this->responseOk($member);
     }
     public function topup(Request $request, $id)
@@ -223,10 +221,9 @@ class MemberController extends BaseController
         if ($validator->fails()) {
             return $this->responseError('Saldo gagal ditambah', 422, $validator->errors());
         }
-        $user = User::where('user_id', $id);
-        $member = Member::where('user_id', $user->id);
+        $member = Member::where('user_id', $id);
 
-        $params['saldo'] = $request->saldo + $user->member->saldo;
+        $params['saldo'] = $request->saldo + $member->saldo;
 
         $member->update($params);
         return $this->responseOk($member->get(), 200, 'Berhasil topup');
