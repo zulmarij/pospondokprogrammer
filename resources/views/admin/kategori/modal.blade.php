@@ -1,3 +1,4 @@
+
 <div id="create" class="modal animated zoomInUp custo-zoomInUp" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
@@ -16,9 +17,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group mb-4">
+                    <div class="form-group mb-4 @error('nama') has-error @enderror ">
                         <label for="nama">Nama</label>
                         <input type="text" name="nama" class="form-control" id="nama" placeholder="{{ old('nama') }}">
+                        @error('nama')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -50,7 +56,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-4">
-                        <label for="nama">Alamat</label>
+                        <label for="nama">nama</label>
                         <input type="text" name="nama" class="form-control" id="nama"
                             value="{{ $kategori->nama ?? old('nama') }}">
                     </div>

@@ -59,10 +59,14 @@ class DetailPenjualanController extends BaseController
     {
         $getdetailPenjualan = DetailPenjualan::where('status', 0)->get()->load('penjualan');
 
+        $total_item = 0;
+        $total_barang = 0;
         $total_harga = 0;
         $total_diskon = 0;
         $array = array();
         foreach ($getdetailPenjualan as $data) {
+            $total_item += 1;
+            $total_barang += $data->penjualan->jumlah_barang;
             $total_harga += $data->penjualan->total_harga;
             $total_diskon += $data->penjualan->barang->diskon;
             $array[] = [
@@ -133,6 +137,14 @@ class DetailPenjualanController extends BaseController
                 $detailpenjualan->update($statusdetailpenjualan);
             }
         }
-        return $this->responseOk($array, 200, 'Barang berhasil dibeli');
+
+        $response = [
+            'total_item' => $total_item,
+            'total_barang' => $total_barang,
+            'total_harga' => $total_harga,
+            'total_diskon' => $total_diskon,
+            'data' => $array,
+        ];
+        return $this->responseOk($response, 200, 'Barang berhasil dibeli');
     }
 }
