@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
 
     Route::get('member', 'MemberController@index');
     Route::get('member/kode_member/{kode_member}', 'MemberController@kodeMember');
-    Route::get('member/saldo', 'MemberController@saldo');
+    Route::get('member/saldo{id}', 'MemberController@saldo');
     Route::get('member/{id}', 'MemberController@show');
     Route::post('member/topup', 'MemberController@topup');
     Route::post('member', 'MemberController@store');

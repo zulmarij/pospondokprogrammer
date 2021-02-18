@@ -206,9 +206,9 @@ class MemberController extends BaseController
         }
     }
 
-    public function saldo(Request $request)
+    public function saldo($id)
     {
-        $user = User::with('member')->find(request('user_id'));
+        $user = User::with('member')->find($id);
         $member = Member::where('user_id', $user->id);
 
         return $this->responseOk($member);
@@ -216,6 +216,7 @@ class MemberController extends BaseController
     public function topup(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer',
             'saldo' => 'required|integer',
         ]);
 
