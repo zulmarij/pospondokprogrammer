@@ -63,19 +63,25 @@ class DetailPenjualanController extends BaseController
         $total_barang = 0;
         $total_harga = 0;
         $total_diskon = 0;
+        $total_bayar = 0;
         $array = array();
         foreach ($getdetailPenjualan as $data) {
             $total_item += 1;
             $total_barang += $data->penjualan->jumlah_barang;
             $total_harga += $data->penjualan->total_harga;
             $total_diskon += $data->penjualan->barang->diskon;
+            $total_bayar += $data->penjualan->dibayar;
+
             $array[] = [
                 'id' => $data->id,
                 'uid' => $data->penjualan->barang->uid,
                 'nama' => $data->penjualan->barang->nama,
-                'jumlah_barang' => $data->penjualan->jumlah_barang,
-                'total_harga' => $data->penjualan->total_harga,
+                'jumlah' => $data->penjualan->jumlah_barang,
+                'harga' => $data->penjualan->total_harga,
                 'diskon' => $data->penjualan->barang->diskon,
+                'member' => $data->penjualan->member->user->nama,
+                'kasir' => $data->penjualan->user->nama,
+                'tanggal' => $data->penjualan->updated_at,
 
             ];
         }
@@ -117,6 +123,17 @@ class DetailPenjualanController extends BaseController
 
                 $statusdetailpenjualan['status'] = 1;
                 $detailpenjualan->update($statusdetailpenjualan);
+
+                $array['kembalian'] = 0;
+                $response = [
+                    'total_item' => $total_item,
+                    'total_barang' => $total_barang,
+                    'total_harga' => $total_harga,
+                    'total_diskon' => $total_diskon,
+                    'dibayar' => $total_bayar,
+                    'kembalian' => 0,
+                    'data' => $array,
+                ];
             }
         } else {
             foreach ($getdetailPenjualan as $data) {
@@ -135,16 +152,28 @@ class DetailPenjualanController extends BaseController
 
                 $statusdetailpenjualan['status'] = 1;
                 $detailpenjualan->update($statusdetailpenjualan);
+
+                $array['diskon'] = 0;
+                $array['member'] = null;
+                $response = [
+                    'total_item' => $total_item,
+                    'total_barang' => $total_barang,
+                    'total_harga' => $total_harga,
+                    'total_diskon' => 0,
+                    'dibayar' => $total_bayar,
+                    'kembalian' => $total_bayar - $total_harga,
+                    'data' => $array,
+                ];
             }
         }
 
-        $response = [
-            'total_item' => $total_item,
-            'total_barang' => $total_barang,
-            'total_harga' => $total_harga,
-            'total_diskon' => $total_diskon,
-            'data' => $array,
-        ];
+        // $response = [
+        //     'total_item' => $total_item,
+        //     'total_barang' => $total_barang,
+        //     'total_harga' => $total_harga,
+        //     'total_diskon' => $total_diskon,
+        //     'data' => $array,
+        // ];
         return $this->responseOk($response, 200, 'Barang berhasil dibeli');
     }
 }
