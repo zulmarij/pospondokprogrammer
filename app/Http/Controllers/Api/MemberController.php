@@ -20,7 +20,7 @@ class MemberController extends BaseController
     public function index()
     {
         $user = User::role('member')->get();
-        $user->load( 'member','roles');
+        $user->load('member', 'roles');
         if (empty($user)) {
             return $this->responseError('Member Kosong', 403);
         }
@@ -78,7 +78,7 @@ class MemberController extends BaseController
         $params = [
             'nama' => $request->nama,
             'email' => $request->email,
-            'kode_member' => $request->kode_member ?? rand(999999999,999999999999),
+            'kode_member' => $request->kode_member ?? rand(999999999, 999999999999),
             'no_hp' => $request->no_hp,
             'password' => bcrypt($request->password),
         ];
@@ -206,15 +206,10 @@ class MemberController extends BaseController
         }
     }
 
-    public function saldo()
+    public function saldo(Request $request)
     {
-        $user = Auth::user();
-        $member = Member::where('user_id', Auth::user()->id)->get();
-        if ($user->hasRole('member')) {
-            return $this->responseOk($member);
-        } else {
-            return $this->responseError('Ini bukan akun member');
-        }
+        $member = Member::where('user_id', request('user_id'))->get();
+        return $this->responseOk($member);
     }
     public function topup(Request $request)
     {
@@ -236,6 +231,4 @@ class MemberController extends BaseController
             return $this->responseError('Ini bukan akun member');
         }
     }
-
-
 }
