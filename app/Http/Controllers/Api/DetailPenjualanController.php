@@ -83,7 +83,7 @@ class DetailPenjualanController extends BaseController
         }
         // dd($array);
         $user = User::find(Auth::user()->id);
-        $member = Member::find(request('member_id'));
+        $member = Member::where('user_id', request('member_id'))->first();
 
         if ($array == []) {
             return $this->responseError('Data request barang kosong');
@@ -104,7 +104,7 @@ class DetailPenjualanController extends BaseController
                 $detailpenjualan = DetailPenjualan::find($data->id);
                 $penjualan = Penjualan::find($data->penjualan_id);
                 $barang = Barang::find($penjualan->barang_id);
-                $member = Member::find(request('member_id'));
+                $member = Member::where('user_id', request('member_id'))->first();
 
                 $bayarpenjualan['dibayar'] = $penjualan->total_harga - ($barang->diskon * $penjualan->jumlah_barang);
                 $bayarpenjualan['member_id'] = request('member_id');
@@ -139,8 +139,9 @@ class DetailPenjualanController extends BaseController
                 $penjualan = Penjualan::find($data->penjualan_id);
                 $barang = Barang::find($penjualan->barang_id);
 
-                $bayarpenjualan['dibayar'] = request('dibayar');
-                $bayarpenjualan['kembalian'] = request('dibayar') - $penjualan->total_harga;
+                $requestbayar = request('dibayar');
+                $bayarpenjualan['dibayar'] = $requestbayar;
+                $bayarpenjualan['kembalian'] =  $bayarpenjualan['dibayar'] - $penjualan->total_harga;
                 $bayarpenjualan['user_id'] = $user->id;
                 $penjualan->update($bayarpenjualan);
 
