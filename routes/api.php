@@ -21,7 +21,7 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset');
 Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');;
 Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
 
-Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
+Route::group(['middleware' => ['auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
 
     Route::get('supplier', 'SupplierController@index');
@@ -43,11 +43,11 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('barang/{id}', 'BarangController@update');
     Route::delete('barang/{id}', 'BarangController@destroy');
 
-    Route::get('kasir', 'KasirController@index');
-    Route::get('kasir/{id}', 'KasirController@show');
-    Route::post('kasir', 'KasirController@store');
-    Route::post('kasir/{id}', 'KasirController@update');
-    Route::delete('kasir/{id}', 'KasirController@destroy');
+    Route::get('kasir', 'KasirController@index')->middleware('role:admin');
+    Route::get('kasir/{id}', 'KasirController@show')->middleware('role:admin');;
+    Route::post('kasir', 'KasirController@store')->middleware('role:admin');;
+    Route::post('kasir/{id}', 'KasirController@update')->middleware('role:admin');;
+    Route::delete('kasir/{id}', 'KasirController@destroy')->middleware('role:admin');;
 
     Route::get('profil', 'ProfilController@index');
     Route::post('profil', 'ProfilController@update');
@@ -60,14 +60,14 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::delete('user/{id}', 'UserController@destroy');
 
 
-    Route::get('member', 'MemberController@index');
-    Route::get('member/kode_member/{kode_member}', 'MemberController@kodeMember');
-    Route::get('member/{id}', 'MemberController@show');
-    Route::get('member/{id}/saldo', 'MemberController@saldo');
-    Route::post('member/{id}/topup', 'MemberController@topup');
-    Route::post('member', 'MemberController@store');
-    Route::post('member/{id}', 'MemberController@update');
-    Route::delete('member/{id}', 'MemberController@destroy');
+    Route::get('member', 'MemberController@index')->middleware('role:admin|kasir');
+    Route::get('member/kode_member/{kode_member}', 'MemberController@kodeMember')->middleware('role:admin|kasir');
+    Route::get('member/{id}', 'MemberController@show')->middleware('role:admin|kasir');
+    Route::get('member/{id}/saldo', 'MemberController@saldo')->middleware('role:admin|kasir');
+    Route::post('member/{id}/topup', 'MemberController@topup')->middleware('role:admin|kasir');
+    Route::post('member', 'MemberController@store')->middleware('role:admin|kasir');
+    Route::post('member/{id}', 'MemberController@update')->middleware('role:admin|kasir');
+    Route::delete('member/{id}', 'MemberController@destroy')->middleware('role:admin|kasir');
 
     Route::get('pengeluaran', 'PengeluaranController@index');
     Route::post('pengeluaran', 'PengeluaranController@store');
