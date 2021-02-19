@@ -222,8 +222,9 @@ class MemberController extends BaseController
             return $this->responseError('Saldo gagal ditambah', 422, $validator->errors());
         }
         $member = Member::where('user_id', $id);
+        dd($member);
 
-        $params['user_id'] = $member->user_id;
+        // $params['user_id'] = $member->user_id;
         $params['saldo'] = $request->saldo + $member->saldo;
 
         $member->update($params);
