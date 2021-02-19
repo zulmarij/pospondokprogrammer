@@ -66,6 +66,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
           //Second upload
           var secondUpload = new FileUploadWithPreview('mySecondImage')
 </script>
+{{-- Components Sweetalerts --}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/sweetalerts/sweetalert2.min.js')}}"></script>
+<script src="{{asset('plugins/sweetalerts/custom-sweetalert.js')}}"></script>
 @break
 
 @case('index_supplier')

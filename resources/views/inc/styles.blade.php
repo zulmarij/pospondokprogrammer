@@ -33,6 +33,13 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Forms File Upload --}}
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('plugins/file-upload/file-upload-with-preview.min.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Sweetalert --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
+<script src="{{asset('plugins/sweetalerts/promise-polyfill.js')}}"></script>
+<link href="{{asset('plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
 @break
 
 @case('index_supplier')

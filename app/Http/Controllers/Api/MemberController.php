@@ -223,6 +223,7 @@ class MemberController extends BaseController
         }
         $member = Member::where('user_id', $id);
 
+        $params['user_id'] = $member->user_id;
         $params['saldo'] = $request->saldo + $member->saldo;
 
         $member->update($params);

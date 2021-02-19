@@ -15,10 +15,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
     <!-- Styles -->
-    @include('inc.styles')  
+    @include('inc.styles')
 </head>
 <body {{ ($has_scrollspy) ? scrollspy($scrollspy_offset) : '' }} class=" {{ ($alt_menu) ? 'alt-menu' : '' }} {{ ($page_name === 'error404') ? 'error404 text-center' : '' }} {{ ($page_name === 'error500') ? 'error500 text-center' : '' }} {{ ($page_name === 'error503') ? 'error503 text-center' : '' }} {{ ($page_name === 'maintenence') ? 'maintanence text-center' : '' }}">
-    
+
+    @include('sweetalert::alert')
+
     <!-- BEGIN LOADER -->
     <div id="load_screen"> <div class="loader"> <div class="loader-content">
         <div class="spinner-grow align-self-center"></div>
@@ -26,7 +28,7 @@
     <!--  END LOADER -->
 
     @include('inc.navbar')
-    
+
     <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container" id="container">
 

@@ -53,7 +53,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         if ($request->foto) {
@@ -87,7 +87,7 @@ class UserController extends Controller
         $user = User::create($params);
         $user->assignRole(request('role'));
 
-        return redirect()->back();
+        return back()->withToastError('User Berhasil ditambah');
     }
 
     public function update(Request $request, $id)
@@ -105,7 +105,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
         if ($request->foto) {
