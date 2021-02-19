@@ -76,7 +76,7 @@ class DetailPenjualanController extends BaseController
                 'nama' => $data->penjualan->barang->nama,
                 'jumlah' => $data->penjualan->jumlah_barang,
                 'harga' => $data->penjualan->total_harga,
-                'diskon' => $data->penjualan->barang->diskon,
+                // 'diskon' => $data->penjualan->barang->diskon,
                 'tanggal' => $data->penjualan->updated_at,
 
             ];
@@ -120,7 +120,6 @@ class DetailPenjualanController extends BaseController
                 $statusdetailpenjualan['status'] = 1;
                 $detailpenjualan->update($statusdetailpenjualan);
 
-                $array[]['kembalian'] = 0;
                 $response = [
                     'total_item' => $total_item,
                     'total_barang' => $total_barang,
@@ -152,7 +151,6 @@ class DetailPenjualanController extends BaseController
                 $statusdetailpenjualan['status'] = 1;
                 $detailpenjualan->update($statusdetailpenjualan);
 
-                $array[]['diskon'] = 0;
                 $response = [
                     'total_item' => $total_item,
                     'total_barang' => $total_barang,
