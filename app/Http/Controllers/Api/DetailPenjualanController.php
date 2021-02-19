@@ -63,6 +63,7 @@ class DetailPenjualanController extends BaseController
         $total_barang = 0;
         $total_harga = 0;
         $total_diskon = 0;
+        $dibayar = request('dibayar');
         $array = array();
         foreach ($getdetailPenjualan as $data) {
             $total_item += 1;
@@ -131,7 +132,7 @@ class DetailPenjualanController extends BaseController
                     'kasir' => $user->nama,
                     'data' => $array,
                 ];
-                return $this->responseOk($response, 200, 'Barang berhasil dibeli');
+                // return $this->responseOk($response, 200, 'Barang berhasil dibeli');
             }
         } else {
             foreach ($getdetailPenjualan as $data) {
@@ -139,9 +140,9 @@ class DetailPenjualanController extends BaseController
                 $penjualan = Penjualan::find($data->penjualan_id);
                 $barang = Barang::find($penjualan->barang_id);
 
-                $requestbayar = request('dibayar');
-                $bayarpenjualan['dibayar'] = $requestbayar;
-                $bayarpenjualan['kembalian'] =  $bayarpenjualan['dibayar'] - $penjualan->total_harga;
+
+                $bayarpenjualan['dibayar'] = $dibayar;
+                $bayarpenjualan['kembalian'] = $bayarpenjualan['dibayar'] - $data->penjualan->total_harga;
                 $bayarpenjualan['user_id'] = $user->id;
                 $penjualan->update($bayarpenjualan);
 
@@ -163,7 +164,7 @@ class DetailPenjualanController extends BaseController
                     'kasir' => $user->nama,
                     'data' => $array,
                 ];
-                return $this->responseOk($response, 200, 'Barang berhasil dibeli');
+                // return $this->responseOk($response, 200, 'Barang berhasil dibeli');
             }
         }
 
