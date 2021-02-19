@@ -1,5 +1,5 @@
 <div id="create" class="modal animated zoomInUp custo-zoomInUp" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <form action="{{ route('kategori.store') }}" method="post" enctype="multipart/form-data">
@@ -32,7 +32,7 @@
 
 @foreach ($kategoris as $kategori)
 <div id="update-{{$kategori->id}}" class="modal animated zoomInUp custo-zoomInUp" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <form action="{{ route('kategori.update', $kategori) }}" method="post" enctype="multipart/form-data">

@@ -20,36 +20,36 @@
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
                             <input type="email" name="email" class="form-control" id="email"
-                                placeholder="{{ old('email') }}">
+                                value="{{ old('email') }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" id="password"
-                                placeholder="{{ old('password') }}">
+                                value="{{ old('password') }}">
                         </div>
                     </div>
                     <div class="form-row mb-4">
                         <div class="form-group col-md-6">
                             <label for="nama">Nama</label>
                             <input type="text" name="nama" class="form-control" id="nama"
-                                placeholder="{{ old('nama') }}">
+                                value="{{ old('nama') }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="no_hp">No Hp</label>
                             <input type="number" name="no_hp" class="form-control" id="no_hp"
-                                placeholder="{{ old('no_hp') }}">
+                                value="{{ old('no_hp') }}">
                         </div>
                     </div>
                     <div class="form-group mb-4">
                         <label for="alamat">Alamat</label>
                         <input type="text" name="alamat" class="form-control" id="alamat"
-                            placeholder="{{ old('alamat') }}">
+                            value="{{ old('alamat') }}">
                     </div>
                     <div class="form-row mb-4">
                         <div class="form-group col-md-6">
                             <label for="umur">Umur</label>
                             <input type="number" name="umur" class="form-control" id="umur"
-                                placeholder="{{ old('umur') }}">
+                                value="{{ old('umur') }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="role">Role</label>

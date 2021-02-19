@@ -13,6 +13,7 @@
                     <table id="html5-extension" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>No Hp</th>
@@ -34,6 +35,7 @@
                                         <p class="align-self-center mb-0 admin-name"> {{ $user->nama }} </p>
                                     </div>
                                 </td>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->no_hp }}</td>
                                 <td>{{ $user->umur }}</td>

@@ -18,29 +18,29 @@
                 <div class="modal-body">
                     <div class="form-group mb-4">
                         <label for="nama">Nama</label>
-                        <input type="text" name="nama" class="form-control" id="nama" placeholder="{{ old('nama') }}">
+                        <input type="text" name="nama" class="form-control" id="nama" value="{{ old('nama') }}">
                     </div>
                     <div class="form-group mb-4">
                         <label for="uid">UID</label>
-                        <input type="number" name="uid" class="form-control" id="uid" placeholder="{{ old('uid') }}">
+                        <input type="number" name="uid" class="form-control" id="uid" value="{{ old('uid') }}">
                     </div>
                     <div class="form-row mb-4">
                         <div class="form-group col-md-6">
                             <label for="harga_beli">Harga Beli</label>
                             <input type="number" name="harga_beli" class="form-control" id="harga_beli"
-                                placeholder="{{ old('harga_beli') }}">
+                                value="{{ old('harga_beli') }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="harga_jual">Harga Jual</label>
                             <input type="number" name="harga_jual" class="form-control" id="harga_jual"
-                                placeholder="{{ old('harga_jual') }}">
+                                value="{{ old('harga_jual') }}">
                         </div>
                     </div>
                     <div class="form-row mb-4">
                         <div class="form-group col-md-6">
                             <label for="merk">Merk</label>
                             <input type="text" name="merk" class="form-control" id="merk"
-                                placeholder="{{ old('merk') }}">
+                                value="{{ old('merk') }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="kategori_id">Kategori</label>
@@ -55,12 +55,12 @@
                         <div class="form-group col-md-6">
                             <label for="stok">Stok</label>
                             <input type="number" name="stok" class="form-control" id="stok"
-                                placeholder="{{ old('stok') }}">
+                                value="{{ old('stok') }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="diskon">Diskon</label>
                             <input type="number" name="diskon" class="form-control" id="diskon"
-                                placeholder="{{ old('diskon') }}">
+                                value="{{ old('diskon') }}">
                         </div>
                     </div>
                 </div>

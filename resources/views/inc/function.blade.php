@@ -27,6 +27,12 @@ echo 'Data Barang ' . $admin_name;
 elseif ($page_name === 'index_kategori') :
 echo 'Data Kategori ' . $admin_name;
 
+elseif ($page_name === 'index_pembelian') :
+echo 'Data Pembelian ' . $admin_name;
+
+elseif ($page_name === 'index_pengeluaran') :
+echo 'Data Pengeluaran ' . $admin_name;
+
 
 
 
@@ -295,6 +301,15 @@ elseif ($page_name === 'index_kategori') :
 echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
 
+elseif ($page_name === 'index_pembelian') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+
+elseif ($page_name === 'index_pengeluaran') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
 
 
 

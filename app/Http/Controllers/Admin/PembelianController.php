@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Barang;
 use App\Http\Controllers\Controller;
 use App\Pembelian;
+use App\Supplier;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,13 +14,22 @@ class PembelianController extends Controller
 {
     public function index()
     {
-        $pembelian = Pembelian::latest()->get();
-        $pembelian->load('barang','supplier');
-        if ($pembelian == []) {
-            return $this->responseError('Pengeluaran belum ada');
-        } else {
-            return $this->responseOk($pembelian);
-        }
+        $pembelians = Pembelian::get();
+        $suppliers = Supplier::get();
+        $barangs = Barang::get();
+        $data = [
+            'category_name' => 'pembelian',
+            'page_name' => 'index_pembelian',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+            'alt_menu' => 0,
+        ];
+        // $pembelian->load('barang','supplier');
+        // if ($pembelian == []) {
+        //     return back()->withToastError('Pembelian belum ada');
+        // } else {
+            return view('admin.pembelian.index', compact('pembelians','suppliers','barangs'))->with($data);
+        // }
     }
 
     /**
@@ -47,7 +58,7 @@ class PembelianController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Pembelian gagal ditambah', 422, $validator->errors());
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         $params = [
@@ -61,9 +72,10 @@ class PembelianController extends Controller
         $barang = Barang::find($pembelian->barang_id);
         $data['stok'] = $barang->stok + $pembelian->jumlah;
         $data['harga_beli'] = $pembelian->total_biaya / $pembelian->jumlah;
+        $data['harga_jual'] = $data['harga_beli'] + ($data['harga_beli'] * 20 / 100);
         $barang->update($data);
 
-        return $this->responseOk($pembelian->load('supplier', 'barang'), 201, 'Pembelian berhasil ditambah');
+        return back()->withToastSuccess('Pembelian Berhasil ditambah');
     }
 
     /**
@@ -105,7 +117,7 @@ class PembelianController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $this->responseError('Pembelian gagal diubah', 422, $validator->errors());
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         $pembelian = Pembelian::find($id);
@@ -122,7 +134,7 @@ class PembelianController extends Controller
         ];
 
         if ($request->jumlah > $stokOld) {
-            return $this->responseError('Pembelian gagal diubah karena barang sudah terjual');
+            return back()->withToastError('Pembelian gagal diubah karena barang sudah terjual');
         }
 
         $pembelian->update($params);
@@ -134,14 +146,16 @@ class PembelianController extends Controller
 
             $data['stok'] =  $barang->stok + $pembelian->jumlah;
             $data['harga_beli'] = $pembelian->total_biaya / $pembelian->jumlah;
+            $data['harga_jual'] = $data['harga_beli'] + ($data['harga_beli'] * 20 / 100);
             $barang->update($data);
         } else {
             $data['stok'] = $barang->stok - $jumlahOld + $pembelian->jumlah;
             $data['harga_beli'] = $pembelian->total_biaya / $pembelian->jumlah;
+            $data['harga_jual'] = $data['harga_beli'] + ($data['harga_beli'] * 20 / 100);
             $barang->update($data);
         }
 
-        return $this->responseOk($pembelian->load('supplier', 'barang'), 200, 'Pembelian berhasil diubah');
+        return back()->withToastSuccess('Pembelian Berhasil diubah');
     }
 
     /**
@@ -155,13 +169,13 @@ class PembelianController extends Controller
         $pembelian = Pembelian::find($id);
         $barang = Barang::find($pembelian->barang_id);
         if ($barang->stok < $pembelian->jumlah) {
-            return $this->responseError('Pembelian gagal dihapus karena barang sudah terjual');
+            return back()->withToastError('Pembelian gagal dihapus karena barang sudah terjual');
         } else {
             $data['stok'] = $barang->stok - $pembelian->jumlah;
             $barang->update($data);
             $pembelian->delete();
         }
 
-        return $this->responseOk(null, 200, 'Pembelian berhasil dihapus');
+        return back()->withToastSuccess('Pembelian Berhasil dihapus');
     }
 }

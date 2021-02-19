@@ -9,42 +9,34 @@
         <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
             <button type="button" class="btn btn-outline-primary btn-rounded mb-2" data-toggle="modal"
                 data-target="#create">Tambah
-                Barang</button>
+                Pembelian</button>
             <div class="widget-content widget-content-area br-6">
                 <div class="table-responsive mb-4 mt-4">
                     <table id="html5-extension" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Nama</th>
-                                <th>Uid</th>
-                                <th>Harga Beli</th>
-                                <th>Harga Jual</th>
-                                <th>Kategori</th>
-                                <th>Merk</th>
-                                <th>Stok</th>
-                                <th>Diskon</th>
+                                <th>Supplier</th>
+                                <th>Barang</th>
+                                <th>Jumlah</th>
+                                <th>Total Biaya</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($barangs as $barang)
+                            @foreach ($pembelians as $pembelian)
                             <tr>
-                                <td>{{ $barang->id }}</td>
-                                <td>{{ $barang->nama }}</td>
-                                <td>{{ $barang->uid }}</td>
-                                <td>{{ number_format($barang->harga_beli, 0, ',', '.') }}</td>
-                                <td>{{ number_format($barang->harga_jual, 0, ',', '.') }}</td>
-                                <td>{{ $barang->kategori->nama }}</td>
-                                <td>{{ $barang->merk }}</td>
-                                <td>{{ $barang->stok }}</td>
-                                <td>{{ number_format($barang->diskon, 0, ',', '.') }}</td>
+                                <td>{{ $pembelian->id }}</td>
+                                <td>{{ $pembelian->supplier->nama }}</td>
+                                <td>{{ $pembelian->barang->nama }}</td>
+                                <td>{{ $pembelian->jumlah }}</td>
+                                <td>{{ $pembelian->total_biaya }}</td>
                                 <td class="text-center">
                                     <div class="btn-group-vertical" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-outline-secondary btn-rounded btn-sm"
-                                            data-toggle="modal" data-target="#update-{{$barang->id}}"> Ubah </button>
+                                            data-toggle="modal" data-target="#update-{{$pembelian->id}}"> Ubah </button>
                                         <button type="button" class="btn btn-outline-danger btn-rounded btn-sm"
-                                            data-toggle="modal" data-target="#delete-{{$barang->id}}"> Delete
+                                            data-toggle="modal" data-target="#delete-{{$pembelian->id}}"> Delete
                                         </button>
                                     </div>
                                 </td>
@@ -57,7 +49,6 @@
         </div>
 
     </div>
-
 </div>
-@include('admin.barang.modal')
+@include('admin.pembelian.modal')
 @endsection

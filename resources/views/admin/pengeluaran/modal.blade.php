@@ -2,10 +2,10 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{ route('member.register') }}" method="post">
+            <form action="{{ route('pengeluaran.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah member</h5>
+                    <h5 class="modal-title">Tambah Pengeluaran</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -17,17 +17,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-4">
-                        <label for="user_id">Nama</label>
-                        <select id="user_id" name="user_id" class="form-control">
-                            @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->nama }}</option>
-                            @endforeach
-                        </select>
+                        <label for="tipe">Tipe</label>
+                        <input type="text" name="tipe" class="form-control" id="tipe" value="{{ old('tipe') }}">
                     </div>
-                    {{-- <div class="form-group mb-4">
-                        <label for="saldo">Nama</label>
-                        <input type="number" name="saldo" class="form-control" id="saldo" value="{{ old('saldo') }}">
-                    </div> --}}
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-4">
+                        <label for="biaya">Biaya</label>
+                        <input type="number" name="biaya" class="form-control" id="biaya" value="{{ old('biaya') }}">
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Batal</button>
@@ -38,15 +36,15 @@
     </div>
 </div>
 
-@foreach ($members as $member)
-<div id="topup-{{$member->id}}" class="modal animated zoomInUp custo-zoomInUp" role="dialog">
+@foreach ($pengeluarans as $pengeluaran)
+<div id="update-{{$pengeluaran->id}}" class="modal animated zoomInUp custo-zoomInUp" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{ route('member.topup', $member) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('pengeluaran.update', $pengeluaran) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title">Top Up</h5>
+                    <h5 class="modal-title">Ubah pengeluaran</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -58,21 +56,26 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-4">
-                        <label for="Saldo">saldo</label>
-                        <input type="number" name="saldo" class="form-control" id="saldo"
-                            value="{{ old('saldo') }}">
+                        <label for="tipe">Tipe</label>
+                        <input type="text" name="tipe" class="form-control" id="tipe"
+                            value="{{ $pengeluaran->tipe ?? old('tipe') }}">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="biaya">biaya</label>
+                        <input type="number" name="biaya" class="form-control" id="biaya"
+                            value="{{ $pengeluaran->biaya ?? old('biaya') }}">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Batal</button>
-                    <button type="submit" class="btn btn-primary">Top Up</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<div class="modal modal-notification animated zoomInUp custo-zoomInUp" id="delete-{{$member->id}}" tabindex="-1"
+<div class="modal modal-notification animated zoomInUp custo-zoomInUp" id="delete-{{$pengeluaran->id}}" tabindex="-1"
     role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" id="deleteLabel">
         <div class="modal-content">
@@ -89,7 +92,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Tidak</button>
-                <form method="POST" action="{{ route('member.destroy', $member) }}">
+                <form method="POST" action="{{ route('pengeluaran.destroy', $pengeluaran) }}">
                     @csrf
                     @method("DELETE")
                     <button type="submit" class="btn btn-primary">Ya</button>

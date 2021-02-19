@@ -66,6 +66,7 @@ class PembelianController extends BaseController
         $barang = Barang::find($pembelian->barang_id);
         $data['stok'] = $barang->stok + $pembelian->jumlah;
         $data['harga_beli'] = $pembelian->total_biaya / $pembelian->jumlah;
+        $data['harga_jual'] = $data['harga_beli'] + ($data['harga_beli'] * 20 / 100);
         $barang->update($data);
 
         return $this->responseOk($pembelian->load('supplier', 'barang'), 201, 'Pembelian berhasil ditambah');
@@ -139,10 +140,12 @@ class PembelianController extends BaseController
 
             $data['stok'] =  $barang->stok + $pembelian->jumlah;
             $data['harga_beli'] = $pembelian->total_biaya / $pembelian->jumlah;
+            $data['harga_jual'] = $data['harga_beli'] + ($data['harga_beli'] * 20 / 100);
             $barang->update($data);
         } else {
             $data['stok'] = $barang->stok - $jumlahOld + $pembelian->jumlah;
             $data['harga_beli'] = $pembelian->total_biaya / $pembelian->jumlah;
+            $data['harga_jual'] = $data['harga_beli'] + ($data['harga_beli'] * 20 / 100);
             $barang->update($data);
         }
 

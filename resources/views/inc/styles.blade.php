@@ -74,6 +74,24 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
 @break
+@case('index_pembelian')
+{{-- Table Datatable HTML5 --}}
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/custom_dt_html5.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/dt-global_style.css')}}">
+{{-- Components Modal --}}
+<link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+@break
+@case('index_pengeluaran')
+{{-- Table Datatable HTML5 --}}
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/custom_dt_html5.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/dt-global_style.css')}}">
+{{-- Components Modal --}}
+<link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+@break
 
 
 @case('analytics')

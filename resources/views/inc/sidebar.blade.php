@@ -279,6 +279,39 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
+            <li class="menu {{ ($category_name === 'pembelian') ? 'active' : '' }}">
+                <a href="/admin/pembelian" aria-expanded="{{ ($category_name === 'pembelian') ? 'true' : 'false' }}"
+                    class="dropdown-toggle">
+                    <div class="">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-shopping-bag">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                            <span>Pembelian</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="menu {{ ($category_name === 'pengeluaran') ? 'active' : '' }}">
+                <a href="/admin/pengeluaran" aria-expanded="{{ ($category_name === 'pengeluaran') ? 'true' : 'false' }}"
+                    class="dropdown-toggle">
+                    <div class="">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-trending-down">
+                                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                                <polyline points="17 18 23 18 23 12"></polyline>
+                            </svg>
+                            <span>Pengeluaran</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
 
 
 
