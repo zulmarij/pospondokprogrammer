@@ -21,7 +21,7 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset');
 Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');;
 Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
 
-Route::group(['middleware' => ['auth:api', 'namespace' => 'Api'], function () {
+Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('logout', 'UserController@logout');
 
     Route::get('supplier', 'SupplierController@index');
