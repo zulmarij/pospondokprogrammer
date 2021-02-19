@@ -140,11 +140,11 @@ class DetailPenjualanController extends BaseController
                 $penjualan = Penjualan::find($data->penjualan_id);
                 $barang = Barang::find($penjualan->barang_id);
 
-
-                $bayarpenjualan['dibayar'] = $dibayar;
+                $bayarpenjualan['dibayar'] = $dibayar ;
                 $bayarpenjualan['kembalian'] = $bayarpenjualan['dibayar'] - $data->penjualan->total_harga;
                 $bayarpenjualan['user_id'] = $user->id;
                 $penjualan->update($bayarpenjualan);
+                $dibayar = $penjualan->kembalian;
 
 
                 $stokbarang['stok'] = $barang->stok - $penjualan->jumlah_barang;
@@ -164,6 +164,7 @@ class DetailPenjualanController extends BaseController
                     'kasir' => $user->nama,
                     'data' => $array,
                 ];
+
                 // return $this->responseOk($response, 200, 'Barang berhasil dibeli');
             }
         }
