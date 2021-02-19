@@ -1436,6 +1436,11 @@ Route::group(['middleware' => 'auth:web', 'namespace' => 'Admin'], function () {
     Route::post('admin/supplier/{id}', 'SupplierController@update')->name('supplier.update');
     Route::delete('admin/supplier/{id}', 'SupplierController@destroy')->name('supplier.destroy');
 
+    Route::get('admin/member', 'MemberController@index')->name('member.index');
+    Route::post('admin/member', 'MemberController@register')->name('member.register');
+    Route::post('admin/member/{id}', 'MemberController@topup')->name('member.topup');
+    Route::delete('admin/member/{id}', 'MemberController@destroy')->name('member.destroy');
+
     Route::get('admin/barang', 'BarangController@index')->name('barang.index');
     Route::post('admin/barang', 'BarangController@store')->name('barang.store');
     Route::post('admin/barang/{id}', 'BarangController@update')->name('barang.update');

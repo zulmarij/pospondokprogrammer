@@ -18,6 +18,9 @@ echo 'Data User ' . $admin_name;
 elseif ($page_name === 'index_supplier') :
 echo 'Data Supplier ' . $admin_name;
 
+elseif ($page_name === 'index_member') :
+echo 'Data Member ' . $admin_name;
+
 elseif ($page_name === 'index_barang') :
 echo 'Data Barang ' . $admin_name;
 
@@ -272,6 +275,11 @@ echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'<
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
 
 elseif ($page_name === 'index_supplier') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+
+elseif ($page_name === 'index_member') :
 // echo 'Sales Admin ' . $admin_name;
 echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';

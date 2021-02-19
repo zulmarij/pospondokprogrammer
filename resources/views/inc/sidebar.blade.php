@@ -213,7 +213,6 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
-
             <li class="menu {{ ($category_name === 'supplier') ? 'active' : '' }}">
                 <a href="/admin/supplier" aria-expanded="{{ ($category_name === 'supplier') ? 'true' : 'false' }}"
                     class="dropdown-toggle">
@@ -230,7 +229,20 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
-
+            <li class="menu {{ ($category_name === 'member') ? 'active' : '' }}">
+                <a href="/admin/member" aria-expanded="{{ ($category_name === 'member') ? 'true' : 'false' }}"
+                    class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-user">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Member</span>
+                    </div>
+                </a>
+            </li>
             <li class="menu {{ ($category_name === 'kategori') ? 'active' : '' }}">
                 <a href="/admin/kategori" aria-expanded="{{ ($category_name === 'kategori') ? 'true' : 'false' }}"
                     class="dropdown-toggle">

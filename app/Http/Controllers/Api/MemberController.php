@@ -86,6 +86,8 @@ class MemberController extends BaseController
 
         $user = User::create($params);
         $user->assignRole('member');
+        $data['user_id'] = $user->id;
+        $member = Member::create($data);
 
         return $this->responseOk($user, 201, 'Member berhasil ditambahkan');
     }
