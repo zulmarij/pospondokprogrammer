@@ -223,7 +223,7 @@ class MemberController extends BaseController
         }
         $member = Member::where('user_id', $id)->get();
 
-        dd($member);
+        dd($member->saldo);
         // $params['user_id'] = $member->user_id;
 
         $params['saldo'] = $request->saldo + $member->saldo;
