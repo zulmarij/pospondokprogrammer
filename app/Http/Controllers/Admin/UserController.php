@@ -87,7 +87,7 @@ class UserController extends Controller
         $user = User::create($params);
         $user->assignRole(request('role'));
 
-        return back()->withToastError('User Berhasil ditambah');
+        return back()->withToastSuccess('User Berhasil ditambah');
     }
 
     public function update(Request $request, $id)
@@ -105,7 +105,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         if ($request->foto) {
@@ -141,10 +141,9 @@ class UserController extends Controller
         ];
 
         $user->update($params);
-        $user->assignRole(request('role') ?? $user->role);
+        $user->syncRoles(request('role')) ?? $user->getRoleNames();
 
-        return redirect()->back();
-
+        return back()->withToastSuccess('User Berhasil diubah');
     }
 
     public function destroy($id)
@@ -152,6 +151,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->back();
+        return back()->withToastSuccess('User Berhasil dihapus');
     }
 }

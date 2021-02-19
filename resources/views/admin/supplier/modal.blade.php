@@ -78,7 +78,6 @@
         </div>
     </div>
 </div>
-@endforeach
 
 <div class="modal modal-notification animated zoomInUp custo-zoomInUp" id="delete-{{$supplier->id}}" tabindex="-1"
     role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
@@ -106,3 +105,4 @@
         </div>
     </div>
 </div>
+@endforeach

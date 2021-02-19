@@ -30,7 +30,7 @@ class KategoriController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         $params = [
@@ -39,7 +39,7 @@ class KategoriController extends Controller
 
         Kategori::create($params);
 
-        return redirect()->back();
+       return back()->withToastSuccess('Kategori Berhasil ditambah');
     }
 
     public function update(Request $request, $id)
@@ -48,7 +48,7 @@ class KategoriController extends Controller
             'nama' => 'string',
         ]);
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         $kategori = Kategori::find($id);
@@ -57,7 +57,7 @@ class KategoriController extends Controller
         ];
 
         $kategori->update($params);
-        return redirect()->back();
+       return back()->withToastSuccess('Kategori Berhasil diubah');
     }
 
     public function destroy($id)
@@ -65,6 +65,6 @@ class KategoriController extends Controller
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return redirect()->back();
+        return back()->withToastSuccess('Kategori Berhasil dihapus');
     }
 }

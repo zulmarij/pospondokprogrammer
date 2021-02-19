@@ -32,20 +32,31 @@ class SupplierController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         $params = [
             'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
         ];
 
         Supplier::create($params);
 
-        return redirect()->back();
+        return back()->withToastSuccess('Supplier Berhasil ditambah');
     }
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'string',
+            'no_hp' => 'string',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
+        }
+
         $supplier = Supplier::find($id);
         $params = [
             'nama' => $request->nama ?? $supplier->nama,
@@ -54,7 +65,7 @@ class SupplierController extends Controller
         ];
 
         $supplier->update($params);
-        return redirect()->back();
+        return back()->withToastSuccess('Supplier Berhasil diubah');
     }
 
     public function destroy($id)
@@ -62,6 +73,6 @@ class SupplierController extends Controller
         $supplier = Supplier::find($id);
         $supplier->delete();
 
-        return redirect()->back();
+        return back()->withToastSuccess('Supplier Berhasil dihapus');
     }
 }

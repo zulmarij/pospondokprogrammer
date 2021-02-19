@@ -39,7 +39,7 @@ class BarangController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         $params = [
@@ -55,7 +55,7 @@ class BarangController extends Controller
 
         $barang = Barang::create($params);
 
-        return redirect()->back();
+         return back()->withToastSuccess('Barang Berhasil tambah');
     }
 
     public function update(Request $request, $id)
@@ -72,7 +72,7 @@ class BarangController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withToastError($validator->messages()->all()[0])->withInput();
         }
 
         $barang = Barang::find($id);
@@ -90,7 +90,7 @@ class BarangController extends Controller
 
         $barang->update($params);
 
-        return redirect()->back();
+         return back()->withToastSuccess('Barang Berhasil diubah');
 
     }
 
@@ -99,7 +99,7 @@ class BarangController extends Controller
         $barang = Barang::find($id);
         $barang->delete();
 
-        return redirect()->back();
+         return back()->withToastSuccess('Barang Berhasil diubah');
     }
 
 }
