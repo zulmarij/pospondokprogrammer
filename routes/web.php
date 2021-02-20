@@ -1467,4 +1467,7 @@ Route::group(['middleware' => 'auth:web', 'namespace' => 'Admin'], function () {
     Route::post('admin/pengeluaran', 'PengeluaranController@store')->name('pengeluaran.store');
     Route::post('admin/pengeluaran/{id}', 'PengeluaranController@update')->name('pengeluaran.update');
     Route::delete('admin/pengeluaran/{id}', 'PengeluaranController@destroy')->name('pengeluaran.destroy');
+
+    Route::get('admin/laporan', 'LaporanController@index')->name('laporan.index');
+    Route::get('admin/absent', 'AbsentController@index')->name('absent.index');
 });
