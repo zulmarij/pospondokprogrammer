@@ -16,9 +16,17 @@ class AbsentController extends BaseController
         $end = Carbon::now();
 
         $absent = Absent::select("*")
-                        ->whereBetween('created_at', [$start, $end])
-                        ->get();
-        return $this->responseOk($absent, 200,'Data absent harian perbulan berhasil ditampilkan');
+            ->whereBetween('created_at', [$start, $end])
+            ->get();
+
+        foreach ($absent as $a) {
+            $response = [
+                'user_id' =>$a->user->id,
+                'nama' => $a->user->nama,
+                'hadir' => $a->created_at,
+            ];
+        }
+
+        return $this->responseOk($response, 200, 'Data absent harian perbulan berhasil ditampilkan');
     }
 }
-
