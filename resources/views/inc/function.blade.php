@@ -30,6 +30,11 @@ echo 'Data Kategori ' . $admin_name;
 elseif ($page_name === 'index_pembelian') :
 echo 'Data Pembelian ' . $admin_name;
 
+elseif ($page_name === 'dibayar') :
+echo 'Data Penjualan ' . $admin_name;
+elseif ($page_name === 'belumbayar') :
+echo 'Data Keranjang ' . $admin_name;
+
 elseif ($page_name === 'index_pengeluaran') :
 echo 'Data Pengeluaran ' . $admin_name;
 
@@ -302,6 +307,15 @@ echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'<
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
 
 elseif ($page_name === 'index_pembelian') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+
+elseif ($page_name === 'dibayar') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
+elseif ($page_name === 'belumbayar') :
 // echo 'Sales Admin ' . $admin_name;
 echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';

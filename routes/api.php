@@ -97,4 +97,6 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::get('laporan/harian', 'LaporanController@dailyReport');
     Route::get('laporan/bulanan', 'LaporanController@monthlyReport');
 
+    Route::get('absent', 'AbsentController@absent');
+
 });

@@ -1456,6 +1456,13 @@ Route::group(['middleware' => 'auth:web', 'namespace' => 'Admin'], function () {
     Route::post('admin/pembelian/{id}', 'PembelianController@update')->name('pembelian.update');
     Route::delete('admin/pembelian/{id}', 'PembelianController@destroy')->name('pembelian.destroy');
 
+    Route::get('admin/penjualan/dibayar', 'PenjualanController@dibayar')->name('penjualan.dibayar');
+    Route::get('admin/penjualan/belumbayar', 'PenjualanController@belumbayar')->name('penjualan.belumbayar');
+    Route::post('admin/penjualan/konfirmasi', 'PenjualanController@konfirmasi')->name('penjualan.konfirmasi');
+    Route::post('admin/penjualan', 'PenjualanController@store')->name('penjualan.store');
+    Route::post('admin/penjualan/{id}', 'PenjualanController@update')->name('penjualan.update');
+    Route::delete('admin/penjualan/{id}', 'PenjualanController@destroy')->name('penjualan.destroy');
+
     Route::get('admin/pengeluaran', 'PengeluaranController@index')->name('pengeluaran.index');
     Route::post('admin/pengeluaran', 'PengeluaranController@store')->name('pengeluaran.store');
     Route::post('admin/pengeluaran/{id}', 'PengeluaranController@update')->name('pengeluaran.update');
