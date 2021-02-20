@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Pembelian;
+use App\Pengeluaran;
 use App\Penjualan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,10 +15,15 @@ class LaporanController extends Controller
     {
         $start = Carbon::now()->subDays(30);
         $end = Carbon::now();
-        $penjualanTanggal = Penjualan::select("*")
+        $penjualans = Penjualan::select("*")
         ->whereBetween('created_at', [$start, $end])
         ->get();
-        
+        $pengeluarans = Pengeluaran::select("*")
+        ->whereBetween('created_at', [$start, $end])
+        ->get();
+        $pembelians = Pembelian::select("*")
+        ->whereBetween('created_at', [$start, $end])
+        ->get();
         // $absents = Absent::select("*")
         //     ->whereBetween('created_at', [$start, $end])
         //     ->get();

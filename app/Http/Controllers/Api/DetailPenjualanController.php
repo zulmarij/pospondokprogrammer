@@ -23,7 +23,8 @@ class DetailPenjualanController extends BaseController
                 'uid' => $data->penjualan->barang->uid,
                 'nama' => $data->penjualan->barang->nama,
                 'jumlah_barang' => $data->penjualan->jumlah_barang,
-                'total_harga' => $data->penjualan->total_harga
+                'total_harga' => $data->penjualan->total_harga,
+                'diskon' => $data->penjualan->barang->diskon
 
             ];
         }
@@ -77,7 +78,7 @@ class DetailPenjualanController extends BaseController
                 'nama' => $data->penjualan->barang->nama,
                 'jumlah' => $data->penjualan->jumlah_barang,
                 'harga' => $data->penjualan->total_harga,
-                'diskon' => $data->penjualan->barang->diskon,
+                // 'diskon' => $data->penjualan->barang->diskon,
                 'tanggal' => $data->penjualan->created_at,
 
             ];
