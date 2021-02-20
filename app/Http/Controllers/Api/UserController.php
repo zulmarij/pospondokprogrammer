@@ -36,8 +36,10 @@ class UserController extends BaseController
                 'user' => $user,
             ];
 
-            $data['user_id'] = $user->id;
-            Absent::create($data);
+            if (Auth()->user()->hasRole('kasir')) {
+                $data['user_id'] = $user->id;
+                Absent::create($data);
+            }
 
             return $this->responseOk($response);
         } else {
