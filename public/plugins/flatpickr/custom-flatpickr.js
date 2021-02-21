@@ -1,6 +1,7 @@
 // Flatpickr
 
 var f1 = flatpickr(document.getElementById('basicFlatpickr'));
+var f5 = flatpickr(document.getElementById('basicFlatpickr1'));
 var f2 = flatpickr(document.getElementById('dateTimeFlatpickr'), {
     enableTime: true,
     dateFormat: "Y-m-d H:i",

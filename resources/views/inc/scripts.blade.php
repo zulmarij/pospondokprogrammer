@@ -47,9 +47,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -92,9 +92,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -124,9 +124,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -156,9 +156,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -188,9 +188,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -219,9 +219,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -250,9 +250,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -281,9 +281,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -316,9 +316,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -347,9 +347,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -378,9 +378,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -392,6 +392,13 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 <script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
 <script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
 <script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
+{{-- Forms Date Range Picker --}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/flatpickr/flatpickr.js')}}"></script>
+<script src="{{asset('plugins/noUiSlider/nouislider.min.js')}}"></script>
+<script src="{{asset('plugins/flatpickr/custom-flatpickr.js')}}"></script>
+<script src="{{asset('plugins/noUiSlider/custom-nouiSlider.js')}}"></script>
+<script src="{{asset('plugins/bootstrap-range-Slider/bootstrap-rangeSlider.js')}}"></script>
 @break
 
 
@@ -1007,9 +1014,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                           "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>',
                           "sLast": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>'
                       },
-                      "sInfo": "Showing page _PAGE_ of _PAGES_",
+                      "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                       "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                      "sSearchPlaceholder": "Search...",
+                      "sSearchPlaceholder": "Cari...",
                       "sLengthMenu": "Results :  _MENU_",
                   },
                   "stripeClasses": [],
@@ -1027,9 +1034,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
     $('#zero-config').DataTable({
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -1046,9 +1053,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
     $('#zero-config').DataTable({
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -1074,9 +1081,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               }],
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "lengthMenu": [5, 10, 20, 50],
@@ -1096,9 +1103,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               }],
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "lengthMenu": [5, 10, 20, 50],
@@ -1110,9 +1117,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
           c3 = $('#style-3').DataTable({
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -1144,9 +1151,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               },
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -1199,9 +1206,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                   ],
                   "oLanguage": {
                       "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                      "sInfo": "Showing page _PAGE_ of _PAGES_",
+                      "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                       "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                      "sSearchPlaceholder": "Search...",
+                      "sSearchPlaceholder": "Cari...",
                       "sLengthMenu": "Results :  _MENU_",
                   },
                   "stripeClasses": [],
@@ -1225,9 +1232,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
     $('#multi-column-ordering').DataTable({
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "stripeClasses": [],
@@ -1256,9 +1263,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               $('table.multi-table').DataTable({
                   "oLanguage": {
                       "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                      "sInfo": "Showing page _PAGE_ of _PAGES_",
+                      "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                       "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                      "sSearchPlaceholder": "Search...",
+                      "sSearchPlaceholder": "Cari...",
                       "sLengthMenu": "Results :  _MENU_",
                   },
                   "stripeClasses": [],
@@ -1280,9 +1287,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
     $('#default-ordering').DataTable( {
               "oLanguage": {
                   "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                  "sInfo": "Showing page _PAGE_ of _PAGES_",
+                  "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                   "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                  "sSearchPlaceholder": "Search...",
+                  "sSearchPlaceholder": "Cari...",
                   "sLengthMenu": "Results :  _MENU_",
               },
               "order": [[ 3, "desc" ]],
@@ -1319,9 +1326,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               var table = $('#range-search').DataTable({
                   "oLanguage": {
                       "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-                      "sInfo": "Showing page _PAGE_ of _PAGES_",
+                      "sInfo": "Menampilkan halaman _PAGE_ dari _PAGES_",
                       "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-                      "sSearchPlaceholder": "Search...",
+                      "sSearchPlaceholder": "Cari...",
                       "sLengthMenu": "Results :  _MENU_",
                   },
                   "stripeClasses": [],

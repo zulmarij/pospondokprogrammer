@@ -66,7 +66,7 @@ class LaporanController extends Controller
         ];
         // dd($array);
 
-        return view('admin.laporan.index', compact('array', 'total_pembelian', 'total_penjualan', 'total_pengeluaran', 'total_pendapatan'))->with($data);
+        return view('admin.laporan.index', compact('array', 'total_pembelian', 'total_penjualan', 'total_pengeluaran', 'total_pendapatan', 'awal', 'akhir'))->with($data);
     }
 
 }

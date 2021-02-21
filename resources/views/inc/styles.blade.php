@@ -130,6 +130,13 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Component Counter --}}
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
+{{-- Forms Date Range Picker --}}
+<link href="{{asset('plugins/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('plugins/noUiSlider/nouislider.min.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('plugins/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('plugins/noUiSlider/custom-nouiSlider.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('plugins/bootstrap-range-Slider/bootstrap-slider.css')}}" rel="stylesheet" type="text/css">
 @break
 
 

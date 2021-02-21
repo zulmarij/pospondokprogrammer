@@ -16,36 +16,52 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="widget-content widget-content-area text-center">
+                        <form action="{{ route('laporan.index') }}">
+                        <div class="form-row mb-4">
+                            <div class="form-group col-md-6">
+                                <label for="">Pilih tanggal awal</label>
+                                <input id="basicFlatpickr" name="awal" value="{{ $awal }}"
+                                    class="form-control flatpickr flatpickr-input active" type="text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="">Pilih tanggal akhir</label>
+                                <input id="basicFlatpickr1" name="akhir" value="{{ $akhir }}"
+                                    class="form-control flatpickr flatpickr-input active" type="text">
+                            </div>
+                        </div>
                         <div class="simple--counter-container">
+
                             <div class="counter-container">
                                 <div class="">
-                                    <h1 class="s-counter2 s-counter">{{ $total_pembelian }}</h1>
+                                    <h1 class="s-counter1 s-counter">{{ $total_pembelian }}</h1>
                                 </div>
                                 <p class="s-counter-text">Total Pembelian</p>
                             </div>
                             <div class="counter-container">
                                 <div class="">
-                                    <h1 class="s-counter3 s-counter">{{ $total_penjualan }}</h1>
+                                    <h1 class="s-counter2 s-counter">{{ $total_penjualan }}</h1>
                                 </div>
                                 <p class="s-counter-text">Total Penjualan</p>
                             </div>
                             <div class="counter-container">
                                 <div class="">
-                                    <h1 class="s-counter4 s-counter">{{ $total_pengeluaran }}</h1>
+                                    <h1 class="s-counter3 s-counter">{{ $total_pengeluaran }}</h1>
                                 </div>
                                 <p class="s-counter-text">Total Pengeluaran</p>
                             </div>
                             <div class="counter-container">
                                 <div class="">
-                                    <h1 class="s-counter5 s-counter">{{ $total_pendapatan }}</h1>
+                                    <h1 class="s-counter4 s-counter">{{ $total_pendapatan }}</h1>
                                 </div>
                                 <p class="s-counter-text">Total Pendapatan</p>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-outline-primary btn-rounded mb-2" data-toggle="modal"
-                        data-target="#ubah">Ubah Tanggal</button>
-                        <a href="{{ url('admin/laporan')}}" class="btn btn-outline-primary btn-rounded mb-2">Refresh</a>
+                            <button type="submit" class="btn btn-outline-primary btn-rounded mb-2">Ubah Tanggal</button>
+                            <a href="{{ route('laporan.index')}}" class="btn btn-outline-primary btn-rounded
+                            mb-2">Refresh</a>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -83,5 +99,4 @@
 
     </div>
 </div>
-@include('admin.laporan.modal')
 @endsection

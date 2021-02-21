@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::get('member', 'MemberController@index')->middleware('role:admin|kasir');
     Route::get('member/kode_member/{kode_member}', 'MemberController@kodeMember')->middleware('role:admin|kasir');
     Route::get('member/{id}', 'MemberController@show')->middleware('role:admin|kasir');
-    Route::get('member/{id}/saldo', 'MemberController@saldo')->middleware('role:admin|kasir');
+    Route::get('member/{id}/saldo', 'MemberController@saldo')->middleware('role:admin|kasir|member');
     Route::post('member/{id}/topup', 'MemberController@topup')->middleware('role:admin|kasir');
     Route::post('member', 'MemberController@store')->middleware('role:admin|kasir');
     Route::post('member/{id}', 'MemberController@update')->middleware('role:admin|kasir');
