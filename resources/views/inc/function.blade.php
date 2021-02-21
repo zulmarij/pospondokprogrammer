@@ -41,6 +41,9 @@ echo 'Data Pengeluaran ' . $admin_name;
 elseif ($page_name === 'index_absent') :
 echo 'Data Absent ' . $admin_name;
 
+elseif ($page_name === 'index_laporan') :
+echo 'Laporan ' . $admin_name;
+
 
 
 
@@ -333,6 +336,10 @@ elseif ($page_name === 'index_absent') :
 echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
 <li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
 
+elseif ($page_name === 'index_laporan') :
+// echo 'Sales Admin ' . $admin_name;
+echo '<li class="breadcrumb-item"><a href="javascript:void(0);">'. $category .'</a></li>
+<li class="breadcrumb-item active" aria-current="page"><span>' . $page .'</span></li>';
 
 
 

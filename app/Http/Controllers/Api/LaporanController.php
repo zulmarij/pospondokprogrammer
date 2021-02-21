@@ -11,44 +11,59 @@ use Illuminate\Http\Request;
 
 class LaporanController extends BaseController
 {
-    public function dailyReport()
+    public function index(Request $request)
     {
-        $penjualanTanggal = Penjualan::whereDay('updated_at', date('d'))->get()->first();
-        $penjualanTotalHarga = Penjualan::whereDay('updated_at', date('d'))->sum('total_harga');
-        $pengeluaranBiaya = Pengeluaran::whereDay('updated_at', date('d'))->sum('biaya');
-        $pembelianTotalBiaya = Pembelian::whereDay('updated_at', date('d'))->sum('total_biaya');
+        $awal = Carbon::today('Asia/Jakarta')->subMonth(1)->format('Y-m-d');
+        $akhir = Carbon::today('Asia/Jakarta')->format('Y-m-d');
+
+        if (request('awal') && request('akhir')) {
+            $awal = request('awal');
+            $akhir = request('akhir');
+        }
+
+        $no = 0;
+        $array = array();
+        $pendapatan = 0;
+        $total_pembelian = 0;
+        $total_penjualan = 0;
+        $total_pengeluaran = 0;
+        $total_pendapatan = 0;
+        while (strtotime($awal) <= strtotime($akhir)) {
+            $tanggal = $awal;
+            $awal = date('Y-m-d', strtotime("+1 day", strtotime($awal)));
+
+            $pembelian  = Pembelian::where('created_at', 'LIKE', "$tanggal%")->sum('total_biaya');
+            $dibayar = Penjualan::where('created_at', 'LIKE', "$tanggal%")->sum('dibayar');
+            $kembalian = Penjualan::where('created_at', 'LIKE', "$tanggal%")->sum('kembalian');
+            $pengeluaran = Pengeluaran::where('created_at', 'LIKE', "$tanggal%")->sum('biaya');
+            $penjualan = $dibayar - $kembalian;
+            $pendapatan = $penjualan - $pembelian  - $pengeluaran;
+
+            $total_pembelian += $pembelian;
+            $total_penjualan += $penjualan;
+            $total_pengeluaran += $pengeluaran;
+            $total_pendapatan += $pendapatan;
+
+            $no ++;
+            $array[] = [
+                'no' => $no,
+                'tanggal' =>  $tanggal,
+                'penjualan' => $penjualan,
+                'pembelian' =>$pembelian ,
+                'pengeluaran' => $pengeluaran,
+                'pendapatan' => $pendapatan
+            ];
+        }
 
         $response = [
-            'pemasukan' => $penjualanTotalHarga,
-            'pengeluaran' => $pengeluaranBiaya + $pembelianTotalBiaya,
-            'report' => [
-                'date' => $penjualanTanggal->created_at,
-                'penjualan' => $penjualanTotalHarga,
-                'pembelian' => $pembelianTotalBiaya,
-                'alokasi' => $pengeluaranBiaya,
-            ]
+            'total_pembelian' => $total_pembelian,
+            'total_penjualan' => $total_penjualan,
+            'total_pengeluaran' => $total_pengeluaran,
+            'total_pendapatan' => $total_pendapatan,
+            'data' => $array,
         ];
-        $response['saldo'] = $response['pemasukan'] - $response['pengeluaran'];
-        return $this->responseOk($response, 200,'Data harian berhasil ditampilkan');
+
+        return $this->responseOk($response, 200,'Data laporan berhasil ditampilkan');
     }
 
-    public function monthlyReport()
-    {
-        $penjualanTanggal = Penjualan::whereMonth('updated_at', date('m'))->get()->first();
-        $penjualanTotalHarga = Penjualan::whereMonth('updated_at', date('m'))->sum('total_harga');
-        $pengeluaranBiaya = Pengeluaran::whereMonth('updated_at', date('m'))->sum('biaya');
-        $pembelianTotalBiaya = Pembelian::whereMonth('updated_at', date('m'))->sum('total_biaya');
-
-        $response = [
-            'pemasukan' => $penjualanTotalHarga,
-            'pengeluaran' => $pengeluaranBiaya + $pembelianTotalBiaya,
-            'report' => [
-                'penjualan' => $penjualanTotalHarga,
-                'pembelian' => $pembelianTotalBiaya,
-                'alokasi' => $pengeluaranBiaya,
-            ]
-        ];
-        $response['saldo'] = $response['pemasukan'] - $response['pengeluaran'];
-        return $this->responseOk($response, 200,'Data bulanan berhasil ditampilkan');
-    }
 }

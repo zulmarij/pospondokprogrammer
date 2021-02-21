@@ -94,8 +94,7 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('role/{id}', 'RoleController@update');
     Route::delete('role/{id}', 'RoleController@destroy');
 
-    Route::get('laporan/harian', 'LaporanController@dailyReport');
-    Route::get('laporan/bulanan', 'LaporanController@monthlyReport');
+    Route::get('laporan', 'LaporanController@index');
 
     Route::get('absent', 'AbsentController@absent');
 
