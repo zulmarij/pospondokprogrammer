@@ -24,7 +24,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 @case('admin')
 {{-- Dashboard 2 --}}
 <script src="{{asset('plugins/apex/apexcharts.min.js')}}"></script>
-<script src="{{asset('assets/js/dashboard/dash_1.js')}}"></script>
+{{-- <script src="{{asset('assets/js/dashboard/dash_1.js')}}"></script> --}}
 @break
 
 @case('index_user')

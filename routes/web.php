@@ -35,20 +35,6 @@ Route::group(['middleware' => 'auth'] , function() {
         return view('dashboard')->with($data);
     });
 
-    Route::get('/admin', function() {
-        // $category_name = '';
-        $data = [
-            'category_name' => 'dashboard',
-            'page_name' => 'admin',
-            'has_scrollspy' => 0,
-            'scrollspy_offset' => '',
-            'alt_menu' => 0,
-        ];
-        // $pageName = 'admin';
-        return view('dashboard2')->with($data);
-    });
-
-
 
     // APPS
     Route::prefix('apps')->group(function () {
@@ -1426,6 +1412,8 @@ Route::get('/', function() {
 });
 
 Route::group(['middleware' => 'auth:web', 'namespace' => 'Admin'], function () {
+    Route::get('admin', 'DashboardController@index')->name('dashboard.index');
+
     Route::get('admin/user', 'UserController@index')->name('user.index');
     Route::post('admin/user', 'UserController@store')->name('user.store');
     Route::post('admin/user/{id}', 'UserController@update')->name('user.update');
