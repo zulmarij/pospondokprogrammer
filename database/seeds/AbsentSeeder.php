@@ -13,7 +13,7 @@ class AbsentSeeder extends Seeder
      */
     public function run()
     {
-        $tanggal = Carbon::today('Asia/Jakarta');
+        $tanggal = Carbon::now('Asia/Jakarta');
 
         Absent::create([
             'user_id' => 3,

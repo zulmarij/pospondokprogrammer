@@ -73,13 +73,13 @@ class DashboardController extends Controller
             $profit = $profit2 - ($profit3 + $profit1);;
 
             $expenses[] = $total_biaya + $biaya;
-            $array = [
-                'biaya' => $biaya,
-                'total_biaya' => $total_biaya,
-                'expenses' => $expenses,
-            ];
+            // $array = [
+            //     'biaya' => $biaya,
+            //     'total_biaya' => $total_biaya,
+            //     'expenses' => $expenses,
+            // ];
 
-            dd($array);
+            // dd($array);
 
         $data = [
             'category_name' => 'dashboard',

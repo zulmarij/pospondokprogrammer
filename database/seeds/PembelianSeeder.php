@@ -13,15 +13,15 @@ class PembelianSeeder extends Seeder
      */
     public function run()
     {
-        $tanggal = Carbon::today('Asia/Jakarta');
+        $tanggal = Carbon::now('Asia/Jakarta');
 
         Pembelian::create([
             'supplier_id' => 1,
             'barang_id' => 3,
             'jumlah' => 5,
             'total_biaya' => 100000,
-            'created_at' => $tanggal->subMonth(3),
-            'updated_at' => $tanggal->subMonth(3)
+            'created_at' => $tanggal->subDay(30),
+            'updated_at' => $tanggal->subDay(30)
         ]);
 
         Pembelian::create([
@@ -29,8 +29,8 @@ class PembelianSeeder extends Seeder
             'barang_id' => 2,
             'jumlah' => 5,
             'total_biaya' => 95000,
-            'created_at' => $tanggal->subMonth(2),
-            'updated_at' => $tanggal->subMonth(2)
+            'created_at' => $tanggal->subDay(20),
+            'updated_at' => $tanggal->subDay(20)
         ]);
 
         Pembelian::create([
@@ -38,8 +38,8 @@ class PembelianSeeder extends Seeder
             'barang_id' => 1,
             'jumlah' => 5,
             'total_biaya' => 55000,
-            'created_at' => $tanggal->subMonth(1),
-            'updated_at' => $tanggal->subMonth(1)
+            'created_at' => $tanggal->subDay(10),
+            'updated_at' => $tanggal->subDay(10)
         ]);
     }
 }
