@@ -14,10 +14,10 @@ class AbsentController extends Controller
     {
         $awal = Carbon::today('Asia/Jakarta')->subMonth(1)->format('Y-m-d');
         $akhir = Carbon::today('Asia/Jakarta')->format('Y-m-d');
-        $absents = Absent::whereDate('created_at', '>=', $awal)
-            ->whereDate('created_at', '<=', $akhir)
-            // ->whereBetween('created_at', [$awal, $akhir])))
-            ->get();
+        $absents = Absent::whereRaw(
+            "(created_at >= $ AND created_at <= ?)",
+            [$akhir, $awal]
+        )->get();
 
         dd($absents);
         $data = [
