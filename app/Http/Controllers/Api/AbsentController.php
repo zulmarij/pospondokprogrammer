@@ -12,18 +12,16 @@ class AbsentController extends BaseController
 {
     public function absent()
     {
-        $start = Carbon::today('Asia/Jakarta')->subMonth(1)->format('Y-m-d');
-        $end = Carbon::today('Asia/Jakarta')->format('Y-m-d');
+        $awal = Carbon::today('Asia/Jakarta')->subMonth(1)->format('Y-m-d');
+        $akhir = Carbon::today('Asia/Jakarta')->format('Y-m-d');
 
-        $absent = Absent::select("*")
-            // ->whereBetween('created_at', [$start, $end])
-            ->whereDate('created_at', '>=', $start)
-            ->whereDate('created_at', '<=', $end)
+        $absents = Absent::whereDate('created_at', '>=', $awal)
+            ->whereDate('created_at', '<=', $akhir)
             ->get();
 
-        foreach ($absent as $a) {
+        foreach ($absents as $a) {
             $response = [
-                'user_id' =>$a->user->id,
+                'user_id' => $a->user->id,
                 'nama' => $a->user->nama,
                 'hadir' => $a->created_at,
             ];
