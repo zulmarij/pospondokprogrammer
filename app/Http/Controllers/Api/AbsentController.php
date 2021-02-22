@@ -19,7 +19,7 @@ class AbsentController extends BaseController
 
 
         foreach ($absents as $a) {
-            $response = [
+            $response[] = [
                 'user_id' => $a->user->id,
                 'nama' => $a->user->nama,
                 'hadir' => $a->created_at,
