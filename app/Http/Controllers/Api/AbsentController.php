@@ -14,11 +14,12 @@ class AbsentController extends BaseController
     {
         $awal = Carbon::today('Asia/Jakarta')->subMonth(1)->format('Y-m-d');
         $akhir = Carbon::today('Asia/Jakarta')->format('Y-m-d');
+        $absents = Absent::whereDate('created_at', '>=', $awal)
+            ->whereDate('created_at', '<=', $akhir)
+            ->get();
 
-        $absents = Absent::whereBetween('created_at', [$awal, $akhir])->get();
 
-
-        foreach ($absents as $a) {
+        foreach ($absents->unique('created_at') as $a) {
             $response[] = [
                 'user_id' => $a->user->id,
                 'nama' => $a->user->nama,

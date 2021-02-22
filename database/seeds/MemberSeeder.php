@@ -14,7 +14,7 @@ class MemberSeeder extends Seeder
     {
         Member::create([
             'user_id' => 5,
-            'saldo' => 100000
+            'saldo' => 1000000
         ]);
     }
 }

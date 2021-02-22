@@ -16,7 +16,7 @@ class UserController extends Controller
         $users = User::get();
 
         $roles = Role::pluck('name', 'name')->all();
-
+        
         $data = [
             'category_name' => 'user',
             'page_name' => 'index_user',

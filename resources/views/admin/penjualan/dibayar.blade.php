@@ -20,6 +20,7 @@
                                 <th>Diskon</th>
                                 <th>Member</th>
                                 <th>Kasir</th>
+                                <th>Tanggal</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,7 @@
                                 <td>{{ $penjualan->dibayar }}</td>
                                 <td>{{ $penjualan->kembalian }}</td>
                                 <td>{{ $penjualan->barang->diskon }}</td>
+                                <td>{{ $penjualan->updated_at }}</td>
                                 <td>{{ !empty($penjualan->member) ? $penjualan->member->user->nama:' '}}</td>
                                 <td>{{ !empty($penjualan->user) ? $penjualan->user->nama:'' }}</td>
                             </tr>

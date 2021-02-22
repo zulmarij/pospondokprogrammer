@@ -20,6 +20,7 @@
                                 <th>Barang</th>
                                 <th>Jumlah</th>
                                 <th>Total Biaya</th>
+                                <th>Tanggal</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -31,6 +32,7 @@
                                 <td>{{ $pembelian->barang->nama }}</td>
                                 <td>{{ $pembelian->jumlah }}</td>
                                 <td>{{ $pembelian->total_biaya }}</td>
+                                <td>{{ $pembelian->created_at }}</td>
                                 <td class="text-center">
                                     <div class="btn-group-vertical" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-outline-secondary btn-rounded btn-sm"

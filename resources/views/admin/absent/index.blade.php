@@ -19,7 +19,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($absents as $absent)
+                            @foreach($absents->unique('created_at') as $absent)
                             <tr>
                                 <td>{{ $absent->id }}</td>
                                 <td>{{ $absent->user->nama }}</td>

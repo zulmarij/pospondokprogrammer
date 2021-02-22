@@ -19,6 +19,7 @@
                             <th>Id</th>
                             <th>Tipe</th>
                             <th>Biaya</th>
+                            <th>Tanggal</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -28,6 +29,7 @@
                             <td>{{ $pengeluaran->id }}</td>
                             <td>{{ $pengeluaran->tipe }}</td>
                             <td>{{ $pengeluaran->biaya }}</td>
+                            <td>{{ $pengeluaran->created_at }}</td>
                             <td class="text-center">
                                 <div class="btn-group-vertical" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-outline-secondary btn-rounded btn-sm"
