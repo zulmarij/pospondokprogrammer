@@ -189,14 +189,15 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 
 
 
-            <li class="menu menu-heading">
+            {{-- <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="feather feather-minus">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg><span>PIMPINAN</span></div>
-            </li>
+            </li> --}}
 
+            @role('admin|pimpinan')
             <li class="menu {{ ($category_name === 'user') ? 'active' : '' }}">
                 <a href="/admin/user" aria-expanded="{{ ($category_name === 'user') ? 'true' : 'false' }}"
                     class="dropdown-toggle">
@@ -229,6 +230,8 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
+            @endrole
+            @role('admin|kasir|pimpinan')
             <li class="menu {{ ($category_name === 'member') ? 'active' : '' }}">
                 <a href="/admin/member" aria-expanded="{{ ($category_name === 'member') ? 'true' : 'false' }}"
                     class="dropdown-toggle">
@@ -243,6 +246,8 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
+            @endrole
+            @role('admin|staff|pimpinan')
             <li class="menu {{ ($category_name === 'kategori') ? 'active' : '' }}">
                 <a href="/admin/kategori" aria-expanded="{{ ($category_name === 'kategori') ? 'true' : 'false' }}"
                     class="dropdown-toggle">
@@ -296,6 +301,8 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
+            @endrole
+            @role('admin|kasir|pimpinan')
             <li class="menu {{ ($category_name === 'penjualan') ? 'active' : '' }}">
                 <a href="#penjualan" data-toggle="collapse"
                     aria-expanded="{{ ($category_name === 'penjualan') ? 'true' : 'false' }}" class="dropdown-toggle">
@@ -327,22 +334,8 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </li>
                 </ul>
             </li>
-            <li class="menu {{ ($category_name === 'pengeluaran') ? 'active' : '' }}">
-                <a href="/admin/pengeluaran" aria-expanded="{{ ($category_name === 'pengeluaran') ? 'true' : 'false' }}"
-                    class="dropdown-toggle">
-                    <div class="">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-trending-down">
-                                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
-                                <polyline points="17 18 23 18 23 12"></polyline>
-                            </svg>
-                            <span>Pengeluaran</span>
-                        </div>
-                    </div>
-                </a>
-            </li>
+            @endrole
+            @role('admin|pimpinan')
             <li class="menu {{ ($category_name === 'absent') ? 'active' : '' }}">
                 <a href="/admin/absent" aria-expanded="{{ ($category_name === 'absent') ? 'true' : 'false' }}"
                     class="dropdown-toggle">
@@ -355,6 +348,24 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
                             <span>Absent</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            @endrole
+            @role('admin|pimpinan')
+            <li class="menu {{ ($category_name === 'pengeluaran') ? 'active' : '' }}">
+                <a href="/admin/pengeluaran" aria-expanded="{{ ($category_name === 'pengeluaran') ? 'true' : 'false' }}"
+                    class="dropdown-toggle">
+                    <div class="">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-trending-down">
+                                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                                <polyline points="17 18 23 18 23 12"></polyline>
+                            </svg>
+                            <span>Pengeluaran</span>
                         </div>
                     </div>
                 </a>
@@ -376,6 +387,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
+            @endrole
 
 
 
