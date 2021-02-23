@@ -8,7 +8,7 @@
             <ul class="navbar-nav theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
                     <a href="/admin">
-                        <img src="{{asset('storage/img/pospromart.png')}}" class="navbar-logo" alt="logo">
+                        <img src="{{asset('img/pospromart.png')}}" class="navbar-logo" alt="logo">
                     </a>
                 </li>
                 <li class="nav-item theme-text">

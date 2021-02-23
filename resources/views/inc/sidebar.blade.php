@@ -7,7 +7,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 
     <nav id="sidebar">
         <div class="profile-info">
-            <figure class="user-cover-image"> <img src="{{asset('storage/img/slide.png')}}" width="255"></figure>
+            <figure class="user-cover-image"> <img src="{{asset('img/slide.png')}}" width="255"></figure>
 
             <div class="user-info">
                 <h6 class="">{{ auth()->user()->nama }}</h6>
