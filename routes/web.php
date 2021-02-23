@@ -1408,11 +1408,15 @@ Route::get('/password/reset', function() {
 });
 
 Route::get('/', function() {
-    return redirect('/admin');
+    return redirect('/login');
+});
+
+Route::get('/admin', function() {
+    return redirect('/login');
 });
 
 Route::group(['middleware' => 'auth:web', 'namespace' => 'Admin'], function () {
-    Route::get('admin', 'DashboardController@index')->name('dashboard.index');
+    // Route::get('admin', 'DashboardController@index')->name('dashboard.index');
 
     Route::get('admin/user', 'UserController@index')->name('user.index')->middleware('role:admin|pimpinan');
     Route::post('admin/user', 'UserController@store')->name('user.store')->middleware('role:admin');
