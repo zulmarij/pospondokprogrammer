@@ -20,9 +20,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 
             @if ($page_name != 'alt_menu' && $page_name != 'blank_page' && $page_name != 'boxed' && $page_name !=
             'breadcrumb' )
-
+            @role('admin|pimpinan')
             <li class="menu {{ ($category_name === 'dashboard') ? 'active' : '' }}">
-                <a href="/admin" aria-expanded="{{ ($category_name === 'user') ? 'true' : 'false' }}"
+                <a href="/admin" aria-expanded="{{ ($category_name === 'dashboard') ? 'true' : 'false' }}"
                     class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -35,6 +35,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                     </div>
                 </a>
             </li>
+            @endrole
 
             <li class="menu md-visible menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -375,7 +376,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
             @endrole
 
 
-{{--
+            {{--
 
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -386,79 +387,79 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
             </li>
 
             <li class="menu {{ ($category_name === 'components') ? 'active' : '' }}">
-                <a href="#components" data-toggle="collapse"
-                    aria-expanded="{{ ($category_name === 'components') ? 'true' : 'false' }}" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-box">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                            </path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                        <span>Components</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-chevron-right">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </div>
-                </a>
-                <ul class="collapse submenu list-unstyled {{ ($category_name === 'components') ? 'show' : '' }}"
-                    id="components" data-parent="#accordionExample">
-                    <li class="{{ ($page_name === 'tabs') ? 'active' : '' }}">
-                        <a href="/components/tabs"> Tabs </a>
-                    </li>
-                    <li class="{{ ($page_name === 'accordions') ? 'active' : '' }}">
-                        <a href="/components/accordions"> Accordions </a>
-                    </li>
-                    <li class="{{ ($page_name === 'modals') ? 'active' : '' }}">
-                        <a href="/components/modals"> Modals </a>
-                    </li>
-                    <li class="{{ ($page_name === 'cards') ? 'active' : '' }}">
-                        <a href="/components/cards"> Cards </a>
-                    </li>
-                    <li class="{{ ($page_name === 'bootstrap_carousel') ? 'active' : '' }}">
-                        <a href="/components/carousel">Carousel</a>
-                    </li>
-                    <li class="{{ ($page_name === 'blockui') ? 'active' : '' }}">
-                        <a href="/components/blockui"> Block UI </a>
-                    </li>
-                    <li class="{{ ($page_name === 'countdown') ? 'active' : '' }}">
-                        <a href="/components/countdown"> Countdown </a>
-                    </li>
-                    <li class="{{ ($page_name === 'counter') ? 'active' : '' }}">
-                        <a href="/components/counter"> Counter </a>
-                    </li>
-                    <li class="{{ ($page_name === 'sweet_alerts') ? 'active' : '' }}">
-                        <a href="/components/sweet_alerts"> Sweet Alerts </a>
-                    </li>
-                    <li class="{{ ($page_name === 'timeline') ? 'active' : '' }}">
-                        <a href="/components/timeline"> Timeline </a>
-                    </li>
-                    <li class="{{ ($page_name === 'notifications') ? 'active' : '' }}">
-                        <a href="/components/notifications"> Notifications </a>
-                    </li>
-                    <li class="{{ ($page_name === 'session_timeout') ? 'active' : '' }}">
-                        <a href="/components/session_timeout"> Session Timeout </a>
-                    </li>
-                    <li class="{{ ($page_name === 'media_object') ? 'active' : '' }}">
-                        <a href="/components/media_object"> Media Object </a>
-                    </li>
-                    <li class="{{ ($page_name === 'list_group') ? 'active' : '' }}">
-                        <a href="/components/list_group"> List Group </a>
-                    </li>
-                    <li class="{{ ($page_name === 'pricing_table') ? 'active' : '' }}">
-                        <a href="/components/pricing_tables"> Pricing Tables </a>
-                    </li>
-                    <li class="{{ ($page_name === 'lightbox') ? 'active' : '' }}">
-                        <a href="/components/lightbox"> Lightbox </a>
-                    </li>
-                </ul>
+            <a href="#components" data-toggle="collapse"
+                aria-expanded="{{ ($category_name === 'components') ? 'true' : 'false' }}" class="dropdown-toggle">
+                <div class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-box">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Components</span>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-chevron-right">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </a>
+            <ul class="collapse submenu list-unstyled {{ ($category_name === 'components') ? 'show' : '' }}"
+                id="components" data-parent="#accordionExample">
+                <li class="{{ ($page_name === 'tabs') ? 'active' : '' }}">
+                    <a href="/components/tabs"> Tabs </a>
+                </li>
+                <li class="{{ ($page_name === 'accordions') ? 'active' : '' }}">
+                    <a href="/components/accordions"> Accordions </a>
+                </li>
+                <li class="{{ ($page_name === 'modals') ? 'active' : '' }}">
+                    <a href="/components/modals"> Modals </a>
+                </li>
+                <li class="{{ ($page_name === 'cards') ? 'active' : '' }}">
+                    <a href="/components/cards"> Cards </a>
+                </li>
+                <li class="{{ ($page_name === 'bootstrap_carousel') ? 'active' : '' }}">
+                    <a href="/components/carousel">Carousel</a>
+                </li>
+                <li class="{{ ($page_name === 'blockui') ? 'active' : '' }}">
+                    <a href="/components/blockui"> Block UI </a>
+                </li>
+                <li class="{{ ($page_name === 'countdown') ? 'active' : '' }}">
+                    <a href="/components/countdown"> Countdown </a>
+                </li>
+                <li class="{{ ($page_name === 'counter') ? 'active' : '' }}">
+                    <a href="/components/counter"> Counter </a>
+                </li>
+                <li class="{{ ($page_name === 'sweet_alerts') ? 'active' : '' }}">
+                    <a href="/components/sweet_alerts"> Sweet Alerts </a>
+                </li>
+                <li class="{{ ($page_name === 'timeline') ? 'active' : '' }}">
+                    <a href="/components/timeline"> Timeline </a>
+                </li>
+                <li class="{{ ($page_name === 'notifications') ? 'active' : '' }}">
+                    <a href="/components/notifications"> Notifications </a>
+                </li>
+                <li class="{{ ($page_name === 'session_timeout') ? 'active' : '' }}">
+                    <a href="/components/session_timeout"> Session Timeout </a>
+                </li>
+                <li class="{{ ($page_name === 'media_object') ? 'active' : '' }}">
+                    <a href="/components/media_object"> Media Object </a>
+                </li>
+                <li class="{{ ($page_name === 'list_group') ? 'active' : '' }}">
+                    <a href="/components/list_group"> List Group </a>
+                </li>
+                <li class="{{ ($page_name === 'pricing_table') ? 'active' : '' }}">
+                    <a href="/components/pricing_tables"> Pricing Tables </a>
+                </li>
+                <li class="{{ ($page_name === 'lightbox') ? 'active' : '' }}">
+                    <a href="/components/lightbox"> Lightbox </a>
+                </li>
+            </ul>
             </li>
 
 
