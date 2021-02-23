@@ -17,6 +17,10 @@ class PembelianController extends Controller
         $pembelians = Pembelian::get();
         $suppliers = Supplier::get();
         $barangs = Barang::get();
+
+        $total_pembelian = Pembelian::count();
+        $total_barang = Pembelian::sum('jumlah');
+        $total_biaya = Pembelian::sum('total_biaya');
         $data = [
             'category_name' => 'pembelian',
             'page_name' => 'index_pembelian',
@@ -28,7 +32,7 @@ class PembelianController extends Controller
         // if ($pembelian == []) {
         //     return back()->withToastError('Pembelian belum ada');
         // } else {
-            return view('admin.pembelian.index', compact('pembelians','suppliers','barangs'))->with($data);
+            return view('admin.pembelian.index', compact('pembelians','suppliers','barangs', 'total_pembelian', 'total_barang', 'total_biaya'))->with($data);
         // }
     }
 

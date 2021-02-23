@@ -23,8 +23,8 @@ class PenjualanSeeder extends Seeder
             'kembalian' => 25000,
             'member_id' => null,
             'user_id' => 3,
-            'created_at' => $tanggal->subDay(30),
-            'updated_at' => $tanggal->subDay(30)
+            'created_at' => $tanggal->subDay(3),
+            'updated_at' => $tanggal->subDay(3)
         ]);
 
         Penjualan::create([
@@ -35,8 +35,8 @@ class PenjualanSeeder extends Seeder
             'kembalian' => 30000,
             'member_id' => 1,
             'user_id' => 3,
-            'created_at' => $tanggal->subDay(20),
-            'updated_at' => $tanggal->subDay(20)
+            'created_at' => $tanggal->subDay(2),
+            'updated_at' => $tanggal->subDay(2)
         ]);
 
         Penjualan::create([
@@ -47,8 +47,8 @@ class PenjualanSeeder extends Seeder
             'kembalian' => 0,
             'member_id' => null,
             'user_id' => 0,
-            'created_at' => $tanggal->subDay(10),
-            'updated_at' => $tanggal->subDay(10)
+            'created_at' => $tanggal->subDay(1),
+            'updated_at' => $tanggal->subDay(1)
         ]);
     }
 }

@@ -7,11 +7,12 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 
     <nav id="sidebar">
         <div class="profile-info">
-            <figure class="user-cover-image"></figure>
+            <figure class="user-cover-image"> <img src="{{asset('storage/img/slide.png')}}" width="255"></figure>
+
             <div class="user-info">
-                <img src="{{ auth()->user()->foto }}" height="90" width="90" alt="avatar">
                 <h6 class="">{{ auth()->user()->nama }}</h6>
-                <p class="">Admin</p>
+                <img src="{{ auth()->user()->foto }}" alt="avatar">
+                {{-- <p class="">{{ auth()->user()->getRoleNames() }}</p> --}}
             </div>
         </div>
         <div class="shadow-bottom"></div>
@@ -21,8 +22,8 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
             'breadcrumb' )
 
             <li class="menu {{ ($category_name === 'dashboard') ? 'active' : '' }}">
-                <a href="#dashboard" data-toggle="collapse"
-                    aria-expanded="{{ ($category_name === 'dashboard') ? 'true' : 'false' }}" class="dropdown-toggle">
+                <a href="/admin" aria-expanded="{{ ($category_name === 'user') ? 'true' : 'false' }}"
+                    class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -32,23 +33,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                         </svg>
                         <span>Dashboard</span>
                     </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-chevron-right">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </div>
                 </a>
-                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled {{ ($category_name === 'dashboard') ? 'show' : '' }} "
-                    id="dashboard" data-parent="#accordionExample">
-                    <li class="{{ ($page_name === 'admin') ? 'active' : '' }}">
-                        <a href="/admin"> Admin </a>
-                    </li>
-                    <li class="{{ ($page_name === 'analytics') ? 'active' : '' }}">
-                        <a href="/analytics"> Analytics </a>
-                    </li>
-                </ul>
             </li>
 
             <li class="menu md-visible menu-heading">
@@ -390,7 +375,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
             @endrole
 
 
-
+{{--
 
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -1133,7 +1118,7 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
                         <a href="/starter-kit/collapsible"> Collapsible </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             @endif
 

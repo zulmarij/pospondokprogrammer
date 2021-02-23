@@ -12,6 +12,7 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::get();
+        $total_supplier = Supplier::count();
         $data = [
             'category_name' => 'supplier',
             'page_name' => 'index_supplier',
@@ -20,7 +21,7 @@ class SupplierController extends Controller
             'alt_menu' => 0,
 
         ];
-        return view('admin.supplier.index', compact('suppliers'))->with($data);
+        return view('admin.supplier.index', compact('suppliers', 'total_supplier'))->with($data);
     }
 
     public function store(Request $request)

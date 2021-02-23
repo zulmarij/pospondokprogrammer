@@ -13,7 +13,7 @@
                     <table id="html5-extension" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>No.</th>
                                 <th>Nama</th>
                                 <th>Absent</th>
                             </tr>
@@ -21,7 +21,7 @@
                         <tbody>
                             @foreach($absents->unique('created_at') as $absent)
                             <tr>
-                                <td>{{ $absent->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $absent->user->nama }}</td>
                                 <td>{{ $absent->created_at }}</td>
                             </tr>

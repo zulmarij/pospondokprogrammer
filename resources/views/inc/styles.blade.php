@@ -33,6 +33,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Forms File Upload --}}
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('plugins/file-upload/file-upload-with-preview.min.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 
 @case('index_supplier')
@@ -43,6 +46,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Components Modal --}}
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 
 @case('index_member')
@@ -53,6 +59,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Components Modal --}}
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 
 @case('index_barang')
@@ -63,6 +72,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Components Modal --}}
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 
 @case('index_kategori')
@@ -73,6 +85,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Components Modal --}}
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 @case('index_pembelian')
 {{-- Table Datatable HTML5 --}}
@@ -82,6 +97,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Components Modal --}}
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 @case('dibayar')
 {{-- Table Datatable HTML5 --}}
@@ -91,6 +109,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Components Modal --}}
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 @case('belumbayar')
 {{-- Table Datatable HTML5 --}}
@@ -112,6 +133,9 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
 {{-- Components Modal --}}
 <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+{{-- Component Counter --}}
+<link href="{{asset('assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/components/custom-counter.css')}}" rel="stylesheet" type="text/css">
 @break
 @case('index_absent')
 {{-- Table Datatable HTML5 --}}

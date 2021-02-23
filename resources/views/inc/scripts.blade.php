@@ -66,10 +66,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
           //Second upload
           var secondUpload = new FileUploadWithPreview('mySecondImage')
 </script>
-{{-- Components Sweetalerts --}}
+{{-- Counter--}}
 <script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
-<script src="{{asset('plugins/sweetalerts/sweetalert2.min.js')}}"></script>
-<script src="{{asset('plugins/sweetalerts/custom-sweetalert.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 
 @case('index_supplier')
@@ -102,6 +102,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               "pageLength": 7
           } );
 </script>
+{{-- Counter--}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 
 @case('index_member')
@@ -134,6 +138,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               "pageLength": 7
           } );
 </script>
+{{-- Counter--}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 
 @case('index_barang')
@@ -166,6 +174,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               "pageLength": 7
           } );
 </script>
+{{-- Counter--}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 
 @case('index_kategori')
@@ -198,6 +210,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               "pageLength": 7
           } );
 </script>
+{{-- Counter--}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 @case('index_pembelian')
 {{-- Table Datatable HTML5 --}}
@@ -229,6 +245,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               "pageLength": 7
           } );
 </script>
+{{-- Counter--}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 @case('dibayar')
 {{-- Table Datatable HTML5 --}}
@@ -260,6 +280,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               "pageLength": 7
           } );
 </script>
+{{-- Counter--}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 @case('belumbayar')
 {{-- Table Datatable HTML5 --}}
@@ -326,6 +350,10 @@ $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_def
               "pageLength": 7
           } );
 </script>
+{{-- Counter--}}
+<script src="{{asset('assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('plugins/counter/jquery.countTo.js')}}"></script>
+<script src="{{asset('assets/js/components/custom-counter.js')}}"></script>
 @break
 @case('index_absent')
 {{-- Table Datatable HTML5 --}}

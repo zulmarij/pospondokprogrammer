@@ -12,7 +12,8 @@ class PengeluaranController extends Controller
     public function index()
     {
         $pengeluarans = Pengeluaran::get();
-
+        $biaya = Pengeluaran::sum('biaya');
+        $jumlah = Pengeluaran::count();
         $data = [
             'category_name' => 'pengeluaran',
             'page_name' => 'index_pengeluaran',
@@ -24,7 +25,7 @@ class PengeluaranController extends Controller
         if ($pengeluarans == []) {
             return back()->withToastError('Pengeluaran belum ada');
         }
-        return view('admin.pengeluaran.index', compact('pengeluarans'))->with($data);
+        return view('admin.pengeluaran.index', compact('pengeluarans','biaya', 'jumlah'))->with($data);
     }
 
     /**

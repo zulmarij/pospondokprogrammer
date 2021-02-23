@@ -16,7 +16,12 @@ class PenjualanController extends Controller
 {
     public function dibayar()
     {
-        $penjualans = Penjualan::where('dibayar', '>', 0)->latest()->get();
+        $penjualans = Penjualan::where('dibayar', '>', 0)->get();
+        $total_penjualan = Penjualan::where('dibayar', '>', 0)->count();
+        $total_barang = Penjualan::sum('jumlah_barang');
+        $dibayar = Penjualan::sum('dibayar');
+        $kembalian = Penjualan::sum('kembalian');
+        $total_harga = $dibayar - $kembalian;
         $barangs = Barang::get();
         $data = [
             'category_name' => 'penjualan',
@@ -25,7 +30,7 @@ class PenjualanController extends Controller
             'scrollspy_offset' => '',
             'alt_menu' => 0,
         ];
-        return view('admin.penjualan.dibayar', compact('penjualans','barangs'))->with($data);
+        return view('admin.penjualan.dibayar', compact('penjualans','barangs', 'total_penjualan', 'total_barang', 'total_harga'))->with($data);
     }
 
     public function belumbayar()
@@ -36,12 +41,12 @@ class PenjualanController extends Controller
         $getdetailPenjualan = DetailPenjualan::where('status', 0)->get();
         $detailPenjualan = DetailPenjualan::with('penjualan')->where('status', 0)->get();
 
-        $total_item = 0;
+        $total_keranjang = 0;
         $total_barang = 0;
         $total_harga = 0;
         $total_diskon = 0;
         foreach ($getdetailPenjualan as $dataGetDetail) {
-            $total_item += 1;
+            $total_keranjang += 1;
             $total_barang += $dataGetDetail->penjualan->jumlah_barang;
             $total_harga += $dataGetDetail->penjualan->total_harga;
             $total_diskon += $dataGetDetail->penjualan->barang->diskon;
@@ -67,7 +72,7 @@ class PenjualanController extends Controller
             'alt_menu' => 0,
         ];
 
-            return view('admin.penjualan.belumbayar', compact('penjualans','barangs','total_item','total_barang','total_harga','total_diskon','members'))->with($data);
+            return view('admin.penjualan.belumbayar', compact('penjualans','barangs','total_keranjang','total_barang','total_harga','total_diskon','members'))->with($data);
     }
 
     /**

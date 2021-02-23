@@ -12,6 +12,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategoris = Kategori::get();
+        $total_kategori = Kategori::count();
         $data = [
             'category_name' => 'kategori',
             'page_name' => 'index_kategori',
@@ -20,7 +21,7 @@ class KategoriController extends Controller
             'alt_menu' => 0,
 
         ];
-        return view('admin.kategori.index', compact('kategoris'))->with($data);
+        return view('admin.kategori.index', compact('kategoris', 'total_kategori'))->with($data);
     }
 
     public function store(Request $request)

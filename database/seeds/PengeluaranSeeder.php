@@ -18,22 +18,22 @@ class PengeluaranSeeder extends Seeder
         Pengeluaran::create([
             'tipe' => 'Beli Lampu',
             'biaya' => 25000,
-            'created_at' => $tanggal->subDay(30),
-            'updated_at' => $tanggal->subDay(30)
+            'created_at' => $tanggal->subDay(3),
+            'updated_at' => $tanggal->subDay(3)
         ]);
 
         Pengeluaran::create([
             'tipe' => 'Beli Nota dll',
             'biaya' => 25000,
-            'created_at' => $tanggal->subDay(20),
-            'updated_at' => $tanggal->subDay(20)
+            'created_at' => $tanggal->subDay(2),
+            'updated_at' => $tanggal->subDay(2)
         ]);
 
         Pengeluaran::create([
             'tipe' => 'Bayar Tagihan Air',
             'biaya' => 50000,
-            'created_at' => $tanggal->subDay(10),
-            'updated_at' => $tanggal->subDay(10)
+            'created_at' => $tanggal->subDay(1),
+            'updated_at' => $tanggal->subDay(1)
         ]);
     }
 }

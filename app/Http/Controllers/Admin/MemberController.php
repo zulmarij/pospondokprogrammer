@@ -14,6 +14,9 @@ class MemberController extends Controller
     {
         $members = Member::get();
         $users = User::role('member')->get();
+
+        $total_member = Member::count();
+        $total_saldo = Member::sum('saldo');
         $data = [
             'category_name' => 'member',
             'page_name' => 'index_member',
@@ -22,7 +25,7 @@ class MemberController extends Controller
             'alt_menu' => 0,
 
         ];
-        return view('admin.member.index', compact('members', 'users'))->with($data);
+        return view('admin.member.index', compact('members', 'users', 'total_member', 'total_saldo'))->with($data);
     }
 
     public function register(Request $request)

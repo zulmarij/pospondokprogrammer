@@ -14,9 +14,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::get();
-
+        $pimpinan = User::role('pimpinan')->count();
+        $staff = User::role('staff')->count();
+        $kasir = User::role('kasir')->count();
+        $member = User::role('member')->count();
         $roles = Role::pluck('name', 'name')->all();
-        
+
         $data = [
             'category_name' => 'user',
             'page_name' => 'index_user',
@@ -25,7 +28,7 @@ class UserController extends Controller
             'alt_menu' => 0,
 
         ];
-        return view('admin.user.index', compact('users', 'roles'))->with($data);
+        return view('admin.user.index', compact('users', 'roles', 'pimpinan', 'staff', 'kasir', 'member'))->with($data);
     }
 
     public function create()

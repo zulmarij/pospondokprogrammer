@@ -18,19 +18,7 @@
                     </div>
 
                     <div class="widget-content widget-content-area text-center">
-                        <form action="{{ route('laporan.index') }}">
-                        <div class="form-row mb-4">
-                            <div class="form-group col-md-6">
-                                <label for="">Pilih tanggal awal</label>
-                                <input id="basicFlatpickr" name="awal" value="{{ $awal }}"
-                                    class="form-control flatpickr flatpickr-input active" type="text">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="">Pilih tanggal akhir</label>
-                                <input id="basicFlatpickr1" name="akhir" value="{{ $akhir }}"
-                                    class="form-control flatpickr flatpickr-input active" type="text">
-                            </div>
-                        </div>
+
                         <div class="simple--counter-container">
 
                             <div class="counter-container">
@@ -58,6 +46,19 @@
                                 <p class="s-counter-text">Total Pendapatan</p>
                             </div>
                         </div>
+                        <form action="{{ route('laporan.index') }}">
+                            <div class="form-row mb-4">
+                                <div class="form-group col-md-6">
+                                    <label for="">Pilih tanggal awal</label>
+                                    <input id="basicFlatpickr" name="awal" value="{{ $awal }}"
+                                        class="form-control flatpickr flatpickr-input active" type="text">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="">Pilih tanggal akhir</label>
+                                    <input id="basicFlatpickr1" name="akhir" value="{{ $akhir }}"
+                                        class="form-control flatpickr flatpickr-input active" type="text">
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-outline-primary btn-rounded mb-2">Ubah Tanggal</button>
                             <a href="{{ route('laporan.index')}}" class="btn btn-outline-primary btn-rounded
                             mb-2">Refresh</a>

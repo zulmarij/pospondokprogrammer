@@ -6,8 +6,53 @@
     <div class="row layout-top-spacing">
 
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-            <button type="button" class="btn btn-outline-primary btn-rounded  mb-2" data-toggle="modal" data-target="#create">Tambah
-                User</button>
+            <div id="counterBasic" class="col-lg-12 layout-spacing">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-header">
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                <h4 class="text-center">User</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-content widget-content-area text-center">
+                        <div class="simple--counter-container">
+
+                            <div class="counter-container">
+                                <div class="">
+                                    <h1 class="s-counter1 s-counter">{{ $pimpinan }}</h1>
+                                </div>
+                                <p class="s-counter-text">Total pimpinan</p>
+                            </div>
+                            <div class="counter-container">
+                                <div class="">
+                                    <h1 class="s-counter2 s-counter">{{ $staff }}</h1>
+                                </div>
+                                <p class="s-counter-text">Total Staff</p>
+                            </div>
+                            <div class="counter-container">
+                                <div class="">
+                                    <h1 class="s-counter3 s-counter">{{ $kasir }}</h1>
+                                </div>
+                                <p class="s-counter-text">Total Kasir</p>
+                            </div>
+                            <div class="counter-container">
+                                <div class="">
+                                    <h1 class="s-counter4 s-counter">{{ $member }}</h1>
+                                </div>
+                                <p class="s-counter-text">Total Member</p>
+                            </div>
+                        </div>
+                        @role('admin')
+                        <button type="button" class="btn btn-outline-primary btn-rounded  mb-2" data-toggle="modal" data-target="#create">Tambah User</button>
+                        @endrole
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="widget-content widget-content-area br-6">
                 <div class="table-responsive mb-4 mt-4">
                     <table id="html5-extension" class="table table-hover" style="width:100%">
@@ -20,7 +65,9 @@
                                 <th>Umur</th>
                                 <th>Alamat</th>
                                 <th>Role</th>
+                                @role('admin')
                                 <th class="text-center">Aksi</th>
+                                @endrole
                             </tr>
                         </thead>
                         <tbody>
@@ -57,6 +104,7 @@
                                     @endforeach
                                     @endif
                                 </td>
+                                @role('admin')
                                 <td class="text-center">
                                     <div class="btn-group-vertical" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-outline-secondary btn-rounded btn-sm" data-toggle="modal"
@@ -65,6 +113,7 @@
                                             data-target="#delete-{{$user->id}}"> Delete </button>
                                     </div>
                                 </td>
+                                @endrole
                             </tr>
                             @endforeach
                         </tbody>

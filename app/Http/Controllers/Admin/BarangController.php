@@ -13,7 +13,12 @@ class BarangController extends Controller
     public function index()
     {
         $barangs = Barang::get();
-        $kategoris = Kategori::orderBy('id', 'ASC')->get();
+        $kategoris = Kategori::get();
+
+        $total_barang = Barang::count();
+        $total_stok = Barang::sum('stok');
+        $total_harga_jual = Barang::sum('harga_jual');
+        $total_harga_beli = Barang::sum('harga_beli');
         $data = [
             'category_name' => 'barang',
             'page_name' => 'index_barang',
@@ -22,7 +27,7 @@ class BarangController extends Controller
             'alt_menu' => 0,
 
         ];
-        return view('admin.barang.index', compact('barangs', 'kategoris'))->with($data);
+        return view('admin.barang.index', compact('barangs', 'kategoris', 'total_barang', 'total_stok', 'total_harga_jual', 'total_harga_beli'))->with($data);
     }
 
     public function store(Request $request)
